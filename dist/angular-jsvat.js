@@ -1,5 +1,5 @@
 angular.module('jsvat', [])
-    .factory('VatCheckerFactory', function () {
+    .factory('JsVatFactory', function () {
 var jsvat = (function () {
     'use strict';
 

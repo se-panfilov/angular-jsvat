@@ -24,7 +24,7 @@ gulp.task('lint', function () {
                 localStorage: true,
                 console: true
             }
-        }))
+        }))VatChecker
         .pipe(jshint.reporter('jshint-stylish'));
 });
 
@@ -47,9 +47,9 @@ gulp.task('ng', function () {
 
     var ngWrap =
         'angular.module(\'jsvat\', [])' +
-        '\n\r    .factory(\'VatCheckerFactory\', function () {' +
+        '\n\r    .factory(\'JsVatFactory\', function () {' +
         '\n\r<%= contents %>' +
-        '\n\r return VatChecker;'+
+        '\n\r return jsvat;'+
         '});';
 
     return gulp.src(src.jsDir)
