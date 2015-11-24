@@ -24,7 +24,7 @@ gulp.task('lint', function () {
                 localStorage: true,
                 console: true
             }
-        }))VatChecker
+        }))
         .pipe(jshint.reporter('jshint-stylish'));
 });
 

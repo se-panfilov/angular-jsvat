@@ -1121,4 +1121,4 @@ angular.module('jsvat', [])
 
     return exports;
 })();
- return VatChecker;});
+ return jsvat;});
