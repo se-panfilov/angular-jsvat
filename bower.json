@@ -1,6 +1,6 @@
 {
   "name": "angular-jsvat",
-  "version": "0.4.7-2",
+  "version": "0.6.1-1",
   "description": "Check the validity of the format of an EU VAT number",
   "main": "./dist/angular-jsvat.js",
   "scripts": {
