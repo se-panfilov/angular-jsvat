@@ -1,6 +1,6 @@
 {
   "name": "angular-jsvat",
-  "version": "0.6.1-1",
+  "version": "1.0.0",
   "description": "Check the validity of the format of an EU VAT number specified",
   "main": "./dist/angular-jsvat.js",
   "scripts": {},
@@ -13,6 +13,7 @@
     "url": "https://github.com/se-panfilov/jangular-svat/issues"
   },
   "keywords": [
+    "angular",
     "jsvat",
     "angular-jsvat",
     "EU",
