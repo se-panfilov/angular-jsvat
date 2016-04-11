@@ -3,46 +3,39 @@
 const gulp = require('gulp');
 
 const config = require('../config');
-const sourcemaps = require('gulp-sourcemaps');
-const uglify = require('gulp-uglify');
-const concat = require('gulp-concat');
 const rename = require('gulp-rename');
 const notify = require('gulp-notify');
 const plumber = require('gulp-plumber');
-const beautify = require('gulp-beautify');
 const wrap = require('gulp-wrap');
+const ngAnnotate = require('gulp-ng-annotate');
+const beautify = require('gulp-beautify');
 
-gulp.task('js', function () {
+gulp.task('ng', function () {
 
-  const ngWrap =
+
+  var ngWrap =
       'angular.module(\'jsvat\', [])' +
       '\n\r    .factory(\'JsVatFactory\', function () {' +
       '\n\r<%= contents %>' +
-      '\n\r return jsvat;'+
+      '\n\r return jsvat;' +
       '});';
 
-  return gulp.src(config.js.src)
+  return gulp.src(config.libs + '/jsvat/dist/jsvat.js')
       .pipe(plumber({
         errorHandler: notify.onError(function (err) {
           return {
-            title: 'Build JS',
+            title: 'jsVat - NG',
             message: err.message
           };
         })
       }))
-      .pipe(concat(config.projectName + '.js'))
       .pipe(wrap(ngWrap))
+      .pipe(ngAnnotate({remove: true, add: true, single_quotes: true}))
       .pipe(beautify({
         indent_size: 2
       }))
-      .pipe(gulp.dest(config.dest))
-      .pipe(sourcemaps.init())
-      .pipe(uglify())
-      .pipe(rename({basename: config.projectName + '.min'}))
-      .pipe(gulp.dest(config.dest))
-      .pipe(sourcemaps.write('.'))
-      .pipe(gulp.dest(config.dest))
+      .pipe(rename({basename: 'jsvat-ng'}))
+      .pipe(gulp.dest('./lib'))
       ;
-
 });
 

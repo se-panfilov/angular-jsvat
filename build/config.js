@@ -3,6 +3,7 @@
 const SRC = 'src';
 const DEST = 'dist';
 const PROJECT_NAME = 'angular-jsvat';
+const LIBS_DIR = 'bower_components';
 
 const config = {
   dest: DEST,
@@ -11,7 +12,8 @@ const config = {
     src: [
       SRC + '/**/*.js'
     ]
-  }
+  },
+  libs: LIBS_DIR
 };
 
 module.exports = config;
