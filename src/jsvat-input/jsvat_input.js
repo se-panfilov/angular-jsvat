@@ -10,13 +10,20 @@ angular.module('angular-jsvat')
         scope: {
           //ngModel: '='
         },
-        link: function (scope, attr) {
+        link: function (scope, element, attrs) {
           //TODO (S.Panfilov)
-          console.log(attr);
+          console.log(attrs);
 
           scope.opts = scope.opts || {};
           
-          
+          //name
+          //value
+          //disabled
+          //maxlength
+          //pattern
+          //readonly
+          //required
+          //size
         }
       }
     })
