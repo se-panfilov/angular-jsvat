@@ -7,6 +7,7 @@ const config = require('../config');
 
 gulp.task('make', function () {
   return runSequence(
+      'ng',
       'js',
       'gzip'
   );

@@ -1,5 +1,3 @@
-var a = {};
-angular.module("angular-jsvat.templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("jsvat_input.html","<div class=\"jsvat\"><input type=\"text\" ng-model=\"vat\"/></div>");}]);
 angular.module('jsvat', [])
 
 .factory('JsVatFactory', function() {
@@ -1613,3 +1611,22 @@ angular.module('jsvat', [])
 
   return jsvat;
 });
+'use strict';
+
+angular.module('jsvat')
+
+    .directive('jsvatInput', function () {
+      return {
+        restrict: 'E',
+        replace: true,
+        templateUrl: 'jsvat_input.html',
+        scope: {
+          //ngModel: '='
+        },
+        link: function (scope) {
+          //TODO (S.Panfilov)
+        }
+      }
+    })
+;
+angular.module("angular-jsvat.templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("jsvat_input.html","<div class=\"jsvat\"><input type=\"text\" ng-model=\"vat\"/></div>");}]);
