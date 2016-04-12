@@ -13,12 +13,7 @@ const beautify = require('gulp-beautify');
 gulp.task('ng', function () {
 
 
-  var ngWrap =
-      'angular.module(\'jsvat\', [])' +
-      '\n\r    .factory(\'JsVatFactory\', function () {' +
-      '\n\r<%= contents %>' +
-      '\n\r return jsvat;' +
-      '});';
+  const ngWrap = require('../../src/template/wrap.js');
 
   return gulp.src(config.libs + '/jsvat/dist/jsvat.js')
       .pipe(plumber({

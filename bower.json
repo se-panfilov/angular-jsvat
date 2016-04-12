@@ -12,7 +12,9 @@
   "bugs": {
     "url": "https://github.com/se-panfilov/jangular-svat/issues"
   },
-  "ignore": {},
+  "ignore": [
+    ".lib/"
+  ],
   "keywords": [
     "angular",
     "jsvat",
@@ -35,7 +37,8 @@
   ],
   "author": "S.Panfilov <se-panfilov@ya.ru> (https://se-panfilov.github.io)",
   "private": false,
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "jsvat": "^1.0.0"
   }
 }
