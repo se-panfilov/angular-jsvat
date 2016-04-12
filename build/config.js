@@ -1,6 +1,6 @@
 "use strict";
 
-const SRC = 'src';
+const SRC = 'src/jsvat-input';
 const DEST = 'dist';
 const PROJECT_NAME = 'angular-jsvat';
 const LIBS_DIR = 'bower_components';
@@ -11,6 +11,11 @@ const config = {
   js: {
     src: [
       SRC + '/**/*.js'
+    ]
+  },
+  jade: {
+    src: [
+      SRC + '/**/*.jade'
     ]
   },
   libs: LIBS_DIR

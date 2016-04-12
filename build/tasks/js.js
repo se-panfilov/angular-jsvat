@@ -9,10 +9,68 @@ const concat = require('gulp-concat');
 const rename = require('gulp-rename');
 const notify = require('gulp-notify');
 const plumber = require('gulp-plumber');
+const ngAnnotate = require('gulp-ng-annotate');
+const eventStream = require('event-stream');
 
 gulp.task('js', function () {
-  
-  return gulp.src(config.js.src)
+  _makeAppJS(config.js.src, config.projectName)
+});
+
+function _makeAppJS(src, projectName) {
+  return gulp.src(src)
+      .pipe(plumber({
+        errorHandler: notify.onError(function (err) {
+          return {
+            title: 'Build JS',
+            message: err.message
+          };
+        })
+      }))
+      .pipe(concat(projectName + '.js'))
+      .pipe(ngAnnotate({remove: true, add: true, single_quotes: true}))
+      ;
+}
+
+function _makeJadeToJS(src, projectName) {
+
+  const jade = require('gulp-jade');
+  const templateCache = require('gulp-angular-templatecache');
+  const htmlmin = require('gulp-htmlmin');
+  const concat = require('gulp-concat');
+  const notify = require('gulp-notify');
+  const plumber = require('gulp-plumber');
+
+  return gulp.src(src)
+      .pipe(plumber({
+        errorHandler: notify.onError(function (err) {
+          return {
+            title: 'Jade to JS',
+            message: err.message
+          };
+        })
+      }))
+      .pipe(jade({pretty: false}))
+      //.pipe(htmlmin({
+      //    removeComments: true,
+      //    removeEmptyElements: true,
+      //    keepClosingSlash: true
+      //}))
+      .pipe(templateCache({
+        module: projectName + '.templates',
+        standalone: true
+      }))
+      .pipe(concat(projectName + '_templates.js'))
+}
+
+gulp.task('js', function () {
+  const libJS = gulp.src('lib/**/*.js');
+  const appJS = _makeAppJS(config.js.src, config.projectName);
+  const appTemplatesJS = _makeJadeToJS(config.jade.src, config.projectName);
+
+  const allAppJS = eventStream.merge(appJS, appTemplatesJS)
+      .pipe(concat(config.projectName + '.js'));
+
+  return eventStream.merge(libJS, allAppJS)
       .pipe(plumber({
         errorHandler: notify.onError(function (err) {
           return {
@@ -32,4 +90,3 @@ gulp.task('js', function () {
       ;
 
 });
-
