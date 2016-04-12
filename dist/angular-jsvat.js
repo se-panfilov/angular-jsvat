@@ -1,4 +1,4 @@
-angular.module('jsvat', [])
+angular.module('angular-jsvat', [])
 
 .factory('JsVatFactory', function() {
 
@@ -1613,7 +1613,7 @@ angular.module('jsvat', [])
 });
 'use strict';
 
-angular.module('jsvat')
+angular.module('angular-jsvat')
 
     .directive('jsvatInput', function () {
       return {

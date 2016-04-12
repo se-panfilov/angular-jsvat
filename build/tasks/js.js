@@ -50,11 +50,11 @@ function _makeJadeToJS(src, projectName) {
         })
       }))
       .pipe(jade({pretty: false}))
-      //.pipe(htmlmin({
-      //    removeComments: true,
-      //    removeEmptyElements: true,
-      //    keepClosingSlash: true
-      //}))
+      .pipe(htmlmin({
+         removeComments: true,
+         removeEmptyElements: true,
+         keepClosingSlash: true
+      }))
       .pipe(templateCache({
         module: projectName + '.templates',
         standalone: true

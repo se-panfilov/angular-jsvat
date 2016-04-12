@@ -9,7 +9,7 @@ const plumber = require('gulp-plumber');
 
 
 gulp.task('gzip', function () {
-  return gulp.src(config.dest + '/**/*.js')
+  return gulp.src(config.dest + '/**/*.min.js')
       .pipe(plumber({
         errorHandler: notify.onError(function (err) {
           return {

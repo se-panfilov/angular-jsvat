@@ -1,5 +1,7 @@
 .jsvat
-    input(
-    type="text"
-    ng-model="vat"
-    )
+    label(ng-class="opts.class")
+        span(ng-bind="opts.label")
+        input(
+        type="text"
+        ng-model="entity.vat"
+        )
