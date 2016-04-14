@@ -1,6 +1,6 @@
 "use strict";
 
-const SRC = 'src';
+const SRC = './';
 const DEST = 'dist';
 const PROJECT_NAME = 'server-angular-jsvat';
 
@@ -9,12 +9,12 @@ const config = {
   projectName: PROJECT_NAME,
   js: {
     src: [
-      SRC + './*.js'
+      SRC + '*.js'
     ]
   },
   jade: {
     src: [
-      SRC + './*.jade'
+      SRC + '*.jade'
     ]
   }
 };
