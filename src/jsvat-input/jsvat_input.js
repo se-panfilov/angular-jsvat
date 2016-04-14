@@ -6,7 +6,7 @@ angular.module('angular-jsvat')
       return {
         restrict: 'E',
         replace: true,
-        templateUrl: 'jsvat_input.html',
+        templateUrl: 'jsvat-input/jsvat_input.html',
         scope: {
           //ngModel: '='
         },
