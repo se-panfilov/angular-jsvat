@@ -8,8 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,300,400italic,500,700,900&amp;subset=latin,cyrillic" type="text/css">
     <script src="bower_components/angular/angular.js" type="text/javascript"></script>
-    <script src="angular-jsvat.js" type="text/javascript"></script>
-    <!--script(src='../angular-jsvat/dist/angular-jsvat.js', type='text/javascript')-->
+    <script src="bower_components/angular-jsvat/dist/angular-jsvat.js" type="text/javascript"></script>
     <script src="index.js" type="text/javascript"></script><!--[if lt IE 9]>
     <script src="bower_components/json3/lib/json3.min.js" type="text/javascript"></script><![endif]-->
     <title>Angular jsvat</title>
@@ -21,7 +20,7 @@
           <li>
             <section>
               <h3>Common case</h3>
-              <jsvat-input id="jsvat_1" jsvat-model="model.vat" jsvat-result="isVatValid" class="some_class"></jsvat-input>
+              <!--jsvat-input#jsvat_1.some_class(jsvat-model="model.vat" jsvat-result="isVatValid")-->
               <div ng-bind="isVatValid"></div>
             </section>
           </li>
