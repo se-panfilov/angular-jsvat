@@ -2,6 +2,7 @@
   "name": "dev_server",
   "devDependencies": {},
   "dependencies": {
-    "angular": "^1.5.3"
+    "angular": "^1.5.3",
+    "angular-jsvat": "^0.6.1-1"
   }
 }

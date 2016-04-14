@@ -2,16 +2,11 @@
 
 const gulp = require('gulp');
 const jade = require('gulp-jade');
-const minifyHTML = require('gulp-minify-html');
 const webServer = require('gulp-webserver');
 
 gulp.task('jade', function () {
     return gulp.src('./*.jade')
         .pipe(jade({pretty: false}))
-        .pipe(minifyHTML({
-            empty: true,
-            spare: true
-        }))
         .pipe(gulp.dest('./'));
 });
 
