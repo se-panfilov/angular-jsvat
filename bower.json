@@ -3,6 +3,6 @@
   "devDependencies": {},
   "dependencies": {
     "angular": "^1.5.3",
-    "angular-jsvat": "^0.6.1-1"
+    "angular-jsvat": "git@github.com:se-panfilov/angular-jsvat.git#dev"
   }
 }
