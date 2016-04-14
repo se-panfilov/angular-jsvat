@@ -1,38 +1,7 @@
 {
-  "name": "angular-jsvat",
-  "version": "0.6.1-1",
-  "description": "Check the validity of the format of an EU VAT number",
-  "main": "./dist/angular-jsvat.js",
-  "scripts": {
-  },
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/se-panfilov/angular-jsvat.git"
-  },
-  "bugs": {
-    "url": "https://github.com/se-panfilov/jangular-svat/issues"
-  },
-  "ignore": {},
-  "keywords": [
-    "jsvat",
-    "angular-jsvat",
-    "EU",
-    "vat",
-    "VAT",
-    "VATIN",
-    "european",
-    "euro",
-    "value",
-    "added",
-    "check",
-    "syntax",
-    "validator",
-    "VAT Code validator",
-    "validator",
-    "finance",
-    "tax"
-  ],
-  "author": "S.Panfilov <se-panfilov@ya.ru> (https://se-panfilov.github.io)",
-  "private": false
+  "name": "dev_server",
+  "devDependencies": {},
+  "dependencies": {
+    "angular": "^1.5.3"
+  }
 }
