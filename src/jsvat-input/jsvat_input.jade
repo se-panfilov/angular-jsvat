@@ -1,7 +1,15 @@
 .jsvat-input
-    label(ng-class="opts.class")
+    label(ng-class="jsvatLabelClassObj")
         span(ng-bind="opts.label")
         input(
         type="text"
         ng-model="entity.vat"
+        ng-class="jsvatInputClassObj"
+        required="opts.isRequired"
+        disabled="opts.isDisabled"
+        readonly="opts.isReadonly"
+        name="opts.name"
+        maxlength="opts.maxlength"
+        pattern="opts.pattern"
+        size="opts.size"
         )

@@ -15,6 +15,9 @@ angular.module('angular-jsvat')
           console.log(attrs);
 
           scope.opts = scope.opts || {};
+
+          scope.jsvatInputClassObj = {};
+          scope.jsvatLabelClassObj = {};
           
           //name
           //value
