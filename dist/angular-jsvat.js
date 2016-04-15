@@ -1611,6 +1611,7 @@ angular.module('angular-jsvat', [])
 
   return jsvat;
 });
+angular.module("angular-jsvat.templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("jsvat_input.html","<div class=\"jsvat-input\"><label ng-class=\"jsvatLabelClassObj\"><input type=\"text\" ng-model=\"entity.vat\" ng-class=\"jsvatInputClassObj\" required=\"opts.isRequired\" disabled=\"opts.isDisabled\" readonly=\"opts.isReadonly\" name=\"opts.name\" maxlength=\"opts.maxlength\" pattern=\"opts.pattern\" size=\"opts.size\"/></label></div>");}]);
 'use strict';
 
 angular.module('angular-jsvat')
@@ -1619,14 +1620,28 @@ angular.module('angular-jsvat')
       return {
         restrict: 'E',
         replace: true,
-        templateUrl: 'jsvat_input.html',
+        templateUrl: 'jsvat-input/jsvat_input.html',
         scope: {
           //ngModel: '='
         },
-        link: function (scope) {
+        link: function (scope, element, attrs) {
           //TODO (S.Panfilov)
+          console.log(attrs);
+
+          scope.opts = scope.opts || {};
+
+          scope.jsvatInputClassObj = {};
+          scope.jsvatLabelClassObj = {};
+          
+          //name
+          //value
+          //disabled
+          //maxlength
+          //pattern
+          //readonly
+          //required
+          //size
         }
       }
     })
 ;
-angular.module("angular-jsvat.templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("jsvat_input.html","<div class=\"jsvat\"><input type=\"text\" ng-model=\"vat\"/></div>");}]);

@@ -12,9 +12,9 @@ const plumber = require('gulp-plumber');
 const ngAnnotate = require('gulp-ng-annotate');
 const eventStream = require('event-stream');
 
-gulp.task('js', function () {
-  _makeAppJS(config.js.src, config.projectName)
-});
+// gulp.task('js', function () {
+//   _makeAppJS(config.js.src, config.projectName)
+// });
 
 function _makeAppJS(src, projectName) {
   return gulp.src(src)
