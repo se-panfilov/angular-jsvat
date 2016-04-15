@@ -5,8 +5,8 @@ angular.module('angular-jsvat')
     .directive('jsvatInput', function () {
       return {
         restrict: 'E',
-        replace: true,
-        templateUrl: 'jsvat-input/jsvat_input.html',
+        //replace: true,
+        templateUrl: 'jsvat_input.html',
         scope: {
           //ngModel: '='
         },
