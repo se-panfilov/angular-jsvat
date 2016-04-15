@@ -11,19 +11,41 @@ angular.module('angular-jsvat')
           ngModel: '='
         },
         compile: function (tElement, tAttrs) {
-          var $elem = angular.element(tElement);
+          var label = angular.element(tElement);
+          var input = label[0].children[0];
 
-          $elem.removeAttr('jsvat-model');
+          //label.removeAttr('ng-model');
 
-          console.log($elem.find('jsvat-input__field'));
-          if (tAttrs['jsvatInputClass']) {
-            console.log(123);
-            $elem.removeAttr('jsvat-input-class');
-            $elem.find('.jsvat-input__field').attr('ng-class', 'jsvatInputClassObj');
-            //$elem[0].children[0].setAttribute('ng-class', 'jsvatInputClassObj');
+          function makeLoverCamelCase(str) {
+            var toUpperCase = function(a) { return a.toUpperCase(); };
+            var toLowerCase = function(a) { return a.toLowerCase(); };
+            var regex = /(?:^|\s)\S/g;
+
+            function makeUpperCase(s) {
+              return s.replace(regex, toUpperCase);
+            }
+
+            return str.split(/\-/).map(makeUpperCase).join('').replace(regex, toLowerCase);
           }
+
+          function _moveAttrToInput(attr, val, attrNameAfter) {
+            if (tAttrs[makeLoverCamelCase(attr)]) {
+              label.removeAttr(attr);
+              input.setAttribute(attrNameAfter || attr, val);
+            }
+          }
+
+          _moveAttrToInput('jsvat-input-class', 'jsvatInputClassObj', 'ng-class');
+          _moveAttrToInput('ng-required', 'opts.isRequired');
+          _moveAttrToInput('ng-disabled', 'opts.isDisabled');
+          _moveAttrToInput('ng-readonly', 'opts.isReadonly');
+          _moveAttrToInput('ng-maxlength', 'opts.maxlength');
+          _moveAttrToInput('ng-minlength', 'opts.minlength');
+          _moveAttrToInput('ng-pattern', 'opts.pattern');
+          _moveAttrToInput('ng-size', 'opts.size');
+
           return {
-            post: function (scope, elem, attrs) {
+            post: function (scope, elem) {
               $compile(elem)(scope);
             }
           };
@@ -48,7 +70,7 @@ angular.module('angular-jsvat')
       }
     }])
 ;
-angular.module("angular-jsvat.templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("jsvat_input.html","<label ng-class=\"jsvatLabelClassObj\" class=\"jsvat-input__block\"><input type=\"text\" ng-model=\"entity.vat\" ng-required=\"opts.isRequired\" ng-disabled=\"opts.isDisabled\" ng-readonly=\"opts.isReadonly\" name=\"opts.name\" ng-maxlength=\"opts.maxlength\" ng-minlength=\"opts.minlength\" ng-pattern=\"opts.pattern\" size=\"opts.size\" class=\"jsvat-input__field\"/></label>");}]);
+angular.module("angular-jsvat.templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("jsvat_input.html","<label ng-class=\"jsvatLabelClassObj\" class=\"jsvat-input__block\"><input type=\"text\" ng-model=\"entity.vat\" class=\"jsvat-input__field\"/></label>");}]);
 angular.module('angular-jsvat', ['angular-jsvat.templates'])
 
 .factory('JsVatFactory', function() {
