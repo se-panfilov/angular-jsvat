@@ -1,3 +1,54 @@
+'use strict';
+
+angular.module('angular-jsvat')
+
+    .directive('jsvatInput', ['$compile', function ($compile) {
+      return {
+        restrict: 'E',
+        replace: true,
+        templateUrl: 'jsvat_input.html',
+        scope: {
+          ngModel: '='
+        },
+        compile: function (tElement, tAttrs) {
+          var $elem = angular.element(tElement);
+
+          $elem.removeAttr('jsvat-model');
+
+          console.log($elem.find('jsvat-input__field'));
+          if (tAttrs['jsvatInputClass']) {
+            console.log(123);
+            $elem.removeAttr('jsvat-input-class');
+            $elem.find('.jsvat-input__field').attr('ng-class', 'jsvatInputClassObj');
+            //$elem[0].children[0].setAttribute('ng-class', 'jsvatInputClassObj');
+          }
+          return {
+            post: function (scope, elem, attrs) {
+              $compile(elem)(scope);
+            }
+          };
+        },
+        link: function (scope, element, attrs) {
+          //TODO (S.Panfilov)
+          console.log(attrs);
+
+          scope.opts = scope.opts || {};
+
+          scope.jsvatInputClassObj = {};
+          scope.jsvatLabelClassObj = {};
+
+          if (!angular.isObject(scope.ngModel)) {
+            var value = scope.ngModel;
+            scope.ngModel = {
+              value: value
+            }
+          }
+
+        }
+      }
+    }])
+;
+angular.module("angular-jsvat.templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("jsvat_input.html","<label ng-class=\"jsvatLabelClassObj\" class=\"jsvat-input__block\"><input type=\"text\" ng-model=\"entity.vat\" ng-required=\"opts.isRequired\" ng-disabled=\"opts.isDisabled\" ng-readonly=\"opts.isReadonly\" name=\"opts.name\" ng-maxlength=\"opts.maxlength\" ng-minlength=\"opts.minlength\" ng-pattern=\"opts.pattern\" size=\"opts.size\" class=\"jsvat-input__field\"/></label>");}]);
 angular.module('angular-jsvat', ['angular-jsvat.templates'])
 
 .factory('JsVatFactory', function() {
@@ -1611,54 +1662,3 @@ angular.module('angular-jsvat', ['angular-jsvat.templates'])
 
   return jsvat;
 });
-'use strict';
-
-angular.module('angular-jsvat')
-
-    .directive('jsvatInput', function () {
-      return {
-        restrict: 'E',
-        replace: true,
-        templateUrl: 'jsvat_input.html',
-        scope: {
-          ngModel: '='
-        },
-        compile: function (tElement) {
-
-          var $elem = angular.element(tElement);
-
-          console.log($elem.parents);
-          // var formName = $elem.parents('[ng-form]').length ? $elem.parents('[ng-form]').attr('ng-form') : $elem.parents('form').attr('name');
-          $elem.attr('ng-class', 'jsvatLabelClassObj');
-
-          $elem.find('jsvat-input__field').attr('ng-class', 'jsvatInputClassObj');
-          $elem[0].children[0].setAttribute('ng-class', 'jsvatInputClassObj');
-          //$elem.removeAttr('bs-form-class');
-
-          return {
-            post: function (scope, elem, attrs) {
-              $compile(elem)(scope);
-            }
-          };
-        },
-        link: function (scope, element, attrs) {
-          //TODO (S.Panfilov)
-          console.log(attrs);
-
-          scope.opts = scope.opts || {};
-
-          scope.jsvatInputClassObj = {};
-          scope.jsvatLabelClassObj = {};
-
-          if (!angular.isObject(scope.ngModel)) {
-            var value = scope.ngModel;
-            scope.ngModel = {
-              value: value
-            }
-          }
-
-        }
-      }
-    })
-;
-angular.module("angular-jsvat.templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("jsvat_input.html","<label ng-class=\"jsvatLabelClassObj\" class=\"jsvat-input__block\"><input type=\"text\" ng-model=\"entity.vat\" ng-required=\"opts.isRequired\" ng-disabled=\"opts.isDisabled\" ng-readonly=\"opts.isReadonly\" name=\"opts.name\" ng-maxlength=\"opts.maxlength\" ng-minlength=\"opts.minlength\" ng-pattern=\"opts.pattern\" size=\"opts.size\" class=\"jsvat-input__field\"/></label>");}]);

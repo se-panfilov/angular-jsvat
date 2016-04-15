@@ -2,7 +2,7 @@
 
 angular.module('angular-jsvat')
 
-    .directive('jsvatInput', function () {
+    .directive('jsvatInput', function ($compile) {
       return {
         restrict: 'E',
         replace: true,
@@ -10,18 +10,18 @@ angular.module('angular-jsvat')
         scope: {
           ngModel: '='
         },
-        compile: function (tElement) {
-
+        compile: function (tElement, tAttrs) {
           var $elem = angular.element(tElement);
 
-          console.log($elem.parents);
-          // var formName = $elem.parents('[ng-form]').length ? $elem.parents('[ng-form]').attr('ng-form') : $elem.parents('form').attr('name');
-          $elem.attr('ng-class', 'jsvatLabelClassObj');
+          $elem.removeAttr('jsvat-model');
 
-          $elem.find('jsvat-input__field').attr('ng-class', 'jsvatInputClassObj');
-          $elem[0].children[0].setAttribute('ng-class', 'jsvatInputClassObj');
-          //$elem.removeAttr('bs-form-class');
-
+          console.log($elem.find('jsvat-input__field'));
+          if (tAttrs['jsvatInputClass']) {
+            console.log(123);
+            $elem.removeAttr('jsvat-input-class');
+            $elem.find('.jsvat-input__field').attr('ng-class', 'jsvatInputClassObj');
+            //$elem[0].children[0].setAttribute('ng-class', 'jsvatInputClassObj');
+          }
           return {
             post: function (scope, elem, attrs) {
               $compile(elem)(scope);
