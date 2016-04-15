@@ -23,7 +23,8 @@ html#ng-app(xmlns:ng='http://angularjs.org', ng-app='demo', lang='en')
                         section
                             h3 Common case
                             jsvat-input#jsvat_1.some_class(
-                            jsvat-model="model.vat"
+                            ng-model="model.vat"
                             jsvat-input-class="someClassObj"
+                            ng-required="true"
                             )
-                            div(ng-bind="isVatValid")
+                            div(ng-bind="model.vat.isValid")
