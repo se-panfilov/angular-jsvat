@@ -5,10 +5,28 @@ angular.module('angular-jsvat')
     .directive('jsvatInput', function () {
       return {
         restrict: 'E',
-        //replace: true,
+        replace: true,
         templateUrl: 'jsvat_input.html',
         scope: {
-          //ngModel: '='
+          ngModel: '='
+        },
+        compile: function (tElement) {
+
+          var $elem = angular.element(tElement);
+
+          console.log($elem.parents);
+          // var formName = $elem.parents('[ng-form]').length ? $elem.parents('[ng-form]').attr('ng-form') : $elem.parents('form').attr('name');
+          $elem.attr('ng-class', 'jsvatLabelClassObj');
+
+          $elem.find('jsvat-input__field').attr('ng-class', 'jsvatInputClassObj');
+          $elem[0].children[0].setAttribute('ng-class', 'jsvatInputClassObj');
+          //$elem.removeAttr('bs-form-class');
+
+          return {
+            post: function (scope, elem, attrs) {
+              $compile(elem)(scope);
+            }
+          };
         },
         link: function (scope, element, attrs) {
           //TODO (S.Panfilov)
@@ -18,15 +36,14 @@ angular.module('angular-jsvat')
 
           scope.jsvatInputClassObj = {};
           scope.jsvatLabelClassObj = {};
-          
-          //name
-          //value
-          //disabled
-          //maxlength
-          //pattern
-          //readonly
-          //required
-          //size
+
+          if (!angular.isObject(scope.ngModel)) {
+            var value = scope.ngModel;
+            scope.ngModel = {
+              value: value
+            }
+          }
+
         }
       }
     })

@@ -1,15 +1,14 @@
-.jsvat-input
-    label(ng-class="jsvatLabelClassObj")
-        span(ng-bind="opts.label")
-        input(
-        type="text"
-        ng-model="entity.vat"
-        ng-class="jsvatInputClassObj"
-        required="opts.isRequired"
-        disabled="opts.isDisabled"
-        readonly="opts.isReadonly"
-        name="opts.name"
-        maxlength="opts.maxlength"
-        pattern="opts.pattern"
-        size="opts.size"
-        )
+label.jsvat-input__block(ng-class="jsvatLabelClassObj")
+    span.jsvat-input__lbl(ng-bind="opts.label")
+    input.jsvat-input__field(
+    type="text"
+    ng-model="entity.vat"
+    ng-required="opts.isRequired"
+    ng-disabled="opts.isDisabled"
+    ng-readonly="opts.isReadonly"
+    name="opts.name"
+    ng-maxlength="opts.maxlength"
+    ng-minlength="opts.minlength"
+    ng-pattern="opts.pattern"
+    size="opts.size"
+    )
