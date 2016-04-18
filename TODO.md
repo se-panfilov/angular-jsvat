@@ -1,4 +1,4 @@
 ### TODOs
 | Filename | line # | TODO
 |:------|:------:|:------
-| jsvat_input.js | 54 | (S.Panfilov)
+| jsvat_input.js | 58 | (S.Panfilov)

@@ -2,5 +2,6 @@ label.jsvat-input__block(ng-class="jsvatLabelClassObj")
     span.jsvat-input__lbl(ng-bind="opts.label")
     input.jsvat-input__field(
     type="text"
-    ng-model="entity.vat"
+    ng-model="jsvatModel.value"
+    ng-change="checkVAT()"
     )
