@@ -8,7 +8,7 @@ angular.module('angular-jsvat-input', [])
         //replace: true,
         templateUrl: 'jsvat_input.html',
         scope: {
-          jsvatModel: '&'
+          jsvatModel: '='
         },
         // compile: function (tElement, tAttrs) {
         //   var label = angular.element(tElement);
@@ -72,10 +72,13 @@ angular.module('angular-jsvat-input', [])
           }
 
           scope.checkVAT = function () {
-            var isDetailed = false; //TODO (S.Panfilov) add detailed check
-            var result = JsVatFactory.checkVAT(scope.jsvatModel.value, isDetailed);
+            var result = JsVatFactory.checkVAT(scope.jsvatModel.value, true);
             scope.jsvatModel.isValid = result.isValid;
-            scope.jsvatModel.contries = (result.contries) ? result.contries : null;
+            scope.jsvatModel.countries = result.countries;
+          };
+
+          if (scope.jsvatModel) {
+            scope.checkVAT();
           }
 
         }
