@@ -54,11 +54,7 @@ angular.module('angular-jsvat-input', [])
         //     }
         //   };
         // },
-        link: function (scope, element, attrs) {
-          //TODO (S.Panfilov)
-          //console.log(attrs);
-          //console.log(scope.jsvatModel);
-
+        link: function (scope, element, attrs, ctrl) {
           // scope.opts = scope.opts || {};
           //
           // scope.jsvatInputClassObj = {};
@@ -75,6 +71,13 @@ angular.module('angular-jsvat-input', [])
             var result = JsVatFactory.checkVAT(scope.jsvatModel.value, true);
             scope.jsvatModel.isValid = result.isValid;
             scope.jsvatModel.countries = result.countries;
+            //scope.jsvatModel.value.$setValidity(false)
+            scope.jsvatModel.value.$setValidity('vat', result.isValid);
+            console.log(scope.jsvatModel.value.$valid);
+            //scope.jsvatModel.value.$setValidity(false)
+            //scope.vat.$setValidity('vat', result.isValid);
+            //scope.jsvatModel.value.$setValidity('vat', result.isValid);
+            ctrl.$setValidity('vat', false)
           };
 
           if (scope.jsvatModel) {
@@ -85,7 +88,7 @@ angular.module('angular-jsvat-input', [])
       }
     }])
 ;
-angular.module("angular-jsvat.templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("jsvat_input.html","<label ng-class=\"jsvatLabelClassObj\" class=\"jsvat-input__block\"><input type=\"text\" ng-model=\"jsvatModel.value\" ng-change=\"checkVAT()\" class=\"jsvat-input__field\"/></label>");}]);
+angular.module("angular-jsvat.templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("jsvat_input.html","<label ng-class=\"jsvatLabelClassObj\" class=\"jsvat-input__block\"><input type=\"text\" name=\"vat\" ng-model=\"jsvatModel.value\" ng-change=\"checkVAT()\" class=\"jsvat-input__field\"/></label>");}]);
 angular.module('angular-jsvat', ['angular-jsvat.templates', 'angular-jsvat-input'])
 
 .factory('JsVatFactory', function() {

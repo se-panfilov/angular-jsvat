@@ -54,11 +54,7 @@ angular.module('angular-jsvat-input', [])
         //     }
         //   };
         // },
-        link: function (scope, element, attrs) {
-          //TODO (S.Panfilov)
-          //console.log(attrs);
-          //console.log(scope.jsvatModel);
-
+        link: function (scope, element, attrs, ctrl) {
           // scope.opts = scope.opts || {};
           //
           // scope.jsvatInputClassObj = {};
@@ -75,6 +71,13 @@ angular.module('angular-jsvat-input', [])
             var result = JsVatFactory.checkVAT(scope.jsvatModel.value, true);
             scope.jsvatModel.isValid = result.isValid;
             scope.jsvatModel.countries = result.countries;
+            //scope.jsvatModel.value.$setValidity(false)
+            scope.jsvatModel.value.$setValidity('vat', result.isValid);
+            console.log(scope.jsvatModel.value.$valid);
+            //scope.jsvatModel.value.$setValidity(false)
+            //scope.vat.$setValidity('vat', result.isValid);
+            //scope.jsvatModel.value.$setValidity('vat', result.isValid);
+            ctrl.$setValidity('vat', false)
           };
 
           if (scope.jsvatModel) {
