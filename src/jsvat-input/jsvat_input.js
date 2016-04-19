@@ -54,11 +54,11 @@ angular.module('angular-jsvat-input', [])
         //     }
         //   };
         // },
+        // controller: function () {
+        //
+        // },
         link: function (scope, element, attrs, ctrl) {
           // scope.opts = scope.opts || {};
-          //
-          // scope.jsvatInputClassObj = {};
-          // scope.jsvatLabelClassObj = {};
 
           if (!angular.isObject(scope.jsvatModel)) {
             var value = scope.jsvatModel;
@@ -67,18 +67,27 @@ angular.module('angular-jsvat-input', [])
             }
           }
 
+          var invalid = '-invalid';
+          var valid = '-valid';
+          //scope.jsvatLabelClassObj = scope.jsvatLabelClassObj || {};
+
+          scope.jsvatInputClassObj = {};
+          scope.jsvatLabelClassObj = {};
+          scope.jsvatInputClassObj[invalid] = !scope.jsvatModel.isValid;
+          scope.jsvatLabelClassObj[invalid] = !scope.jsvatModel.isValid;
+          scope.jsvatInputClassObj[valid] = scope.jsvatModel.isValid;
+          scope.jsvatLabelClassObj[valid] = scope.jsvatModel.isValid;
+
           scope.checkVAT = function () {
             var result = JsVatFactory.checkVAT(scope.jsvatModel.value, true);
             scope.jsvatModel.isValid = result.isValid;
             scope.jsvatModel.countries = result.countries;
-            //scope.jsvatModel.value.$setValidity(false)
-            scope.jsvatModel.value.$setValidity('vat', result.isValid);
-            console.log(scope.jsvatModel.value.$valid);
-            //scope.jsvatModel.value.$setValidity(false)
-            //scope.vat.$setValidity('vat', result.isValid);
-            //scope.jsvatModel.value.$setValidity('vat', result.isValid);
-            ctrl.$setValidity('vat', false)
+            scope.jsvatInputClassObj[invalid] = !result.isValid;
+            scope.jsvatLabelClassObj[invalid] = !result.isValid;
+            scope.jsvatInputClassObj[valid] = result.isValid;
+            scope.jsvatLabelClassObj[valid] = result.isValid;
           };
+
 
           if (scope.jsvatModel) {
             scope.checkVAT();
