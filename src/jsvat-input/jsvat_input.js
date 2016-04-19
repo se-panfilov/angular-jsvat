@@ -78,6 +78,9 @@ angular.module('angular-jsvat-input', [])
           scope.jsvatInputClassObj[valid] = scope.jsvatModel.isValid;
           scope.jsvatLabelClassObj[valid] = scope.jsvatModel.isValid;
 
+          //TODO (S.Panfilov) refactor this
+          var modelController = element.find('input').controller('ngModel');
+
           scope.checkVAT = function () {
             var result = JsVatFactory.checkVAT(scope.jsvatModel.value, true);
             scope.jsvatModel.isValid = result.isValid;
@@ -86,6 +89,7 @@ angular.module('angular-jsvat-input', [])
             scope.jsvatLabelClassObj[invalid] = !result.isValid;
             scope.jsvatInputClassObj[valid] = result.isValid;
             scope.jsvatLabelClassObj[valid] = result.isValid;
+            modelController.$setValidity('vat', result.isValid);
           };
 
 
