@@ -2,10 +2,10 @@
 
 angular.module('angular-jsvat-input', [])
 
-    .directive('jsvatInput', function ($compile, JsVatFactory) {
+    .directive('jsvatInput', ['$compile', 'JsVatFactory', function ($compile, JsVatFactory) {
       return {
         restrict: 'E',
-        //replace: true,
+        replace: true,
         templateUrl: 'jsvat_input.html',
         scope: {
           jsvatModel: '='
@@ -57,7 +57,7 @@ angular.module('angular-jsvat-input', [])
         // controller: function () {
         //
         // },
-        link: function (scope, element, attrs, ctrl) {
+        link: function (scope, element) {
           // scope.opts = scope.opts || {};
 
           if (!angular.isObject(scope.jsvatModel)) {
@@ -78,7 +78,6 @@ angular.module('angular-jsvat-input', [])
           scope.jsvatInputClassObj[valid] = scope.jsvatModel.isValid;
           scope.jsvatLabelClassObj[valid] = scope.jsvatModel.isValid;
 
-          //TODO (S.Panfilov) refactor this
           var modelController = element.find('input').controller('ngModel');
 
           scope.checkVAT = function () {
@@ -92,6 +91,10 @@ angular.module('angular-jsvat-input', [])
             modelController.$setValidity('vat', result.isValid);
           };
 
+          scope.$watch('jsvatModel.value', function(){
+            scope.checkVAT();
+          });
+
 
           if (scope.jsvatModel) {
             scope.checkVAT();
@@ -99,5 +102,5 @@ angular.module('angular-jsvat-input', [])
 
         }
       }
-    })
+    }])
 ;
