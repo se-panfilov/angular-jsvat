@@ -60,6 +60,12 @@ angular.module('angular-jsvat-input', [])
         link: function (scope, element) {
           // scope.opts = scope.opts || {};
 
+          var invalid = '-invalid';
+          var valid = '-valid';
+
+          scope.jsvatInputClassObj = {};
+          scope.jsvatLabelClassObj = {};
+
           if (!angular.isObject(scope.jsvatModel)) {
             var value = scope.jsvatModel;
             scope.jsvatModel = {
@@ -67,16 +73,13 @@ angular.module('angular-jsvat-input', [])
             }
           }
 
-          var invalid = '-invalid';
-          var valid = '-valid';
-          //scope.jsvatLabelClassObj = scope.jsvatLabelClassObj || {};
-
-          scope.jsvatInputClassObj = {};
-          scope.jsvatLabelClassObj = {};
-          scope.jsvatInputClassObj[invalid] = !scope.jsvatModel.isValid;
-          scope.jsvatLabelClassObj[invalid] = !scope.jsvatModel.isValid;
-          scope.jsvatInputClassObj[valid] = scope.jsvatModel.isValid;
-          scope.jsvatLabelClassObj[valid] = scope.jsvatModel.isValid;
+          function setValidity(isValid) {
+            scope.jsvatInputClassObj[invalid] = !isValid;
+            scope.jsvatLabelClassObj[invalid] = !isValid;
+            scope.jsvatInputClassObj[valid] = isValid;
+            scope.jsvatLabelClassObj[valid] = isValid;
+            modelController.$setValidity('vat', isValid);
+          }
 
           var modelController = element.find('input').controller('ngModel');
 
@@ -84,14 +87,11 @@ angular.module('angular-jsvat-input', [])
             var result = JsVatFactory.checkVAT(scope.jsvatModel.value, true);
             scope.jsvatModel.isValid = result.isValid;
             scope.jsvatModel.countries = result.countries;
-            scope.jsvatInputClassObj[invalid] = !result.isValid;
-            scope.jsvatLabelClassObj[invalid] = !result.isValid;
-            scope.jsvatInputClassObj[valid] = result.isValid;
-            scope.jsvatLabelClassObj[valid] = result.isValid;
-            modelController.$setValidity('vat', result.isValid);
+            var isEmpty = scope.jsvatModel.value === '' || (!scope.jsvatModel.value && scope.jsvatModel.value !== '0');
+            setValidity(result.isValid || isEmpty);
           };
 
-          scope.$watch('jsvatModel.value', function(){
+          scope.$watch('jsvatModel.value', function () {
             scope.checkVAT();
           });
 
