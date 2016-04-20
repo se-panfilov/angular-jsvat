@@ -21,12 +21,69 @@ html#ng-app(xmlns:ng='http://angularjs.org', ng-app='demo', lang='en')
                 ol
                     li
                         section
-                            h3 Common case
-                            jsvat-input#jsvat_1.some_class(
-                            jsvat-model="model"
-                            jsvat-input-class="someClassObj"
-                            ng-required="true"
-                            )
-                            div(ng-bind="model.isValid")
-                            div(ng-bind="model.value")
-                            div(ng-bind="model.countries")
+                            h3 Common
+                            jsvat-input(jsvat-model="models.common")
+                            div(ng-bind="'IsValid: ' + models.common.isValid")
+                            div(ng-bind="'Value: ' + models.common.value")
+                            div(ng-bind="'Countries: ' + models.common.countries")
+                            button(ng-click="models.common.value='EL000000141'") Set Value
+                    li
+                        section
+                            h3 Common (make sure no affects)
+                            jsvat-input.some_class(jsvat-model="models.common2")
+                            div(ng-bind="'IsValid: ' + models.common2.isValid")
+                            div(ng-bind="'Value: ' + models.common2.value")
+                            div(ng-bind="'Countries: ' + models.common2.countries")
+                            button(ng-click="models.common2.value='ESA09130790'") Set Value
+                    li
+                        section
+                            h3 Linked models
+                            jsvat-input(jsvat-model="models.linked")
+                            div(ng-bind="'IsValid: ' + models.linked.isValid")
+                            div(ng-bind="'Value: ' + models.linked.value")
+                            div(ng-bind="'Countries: ' + models.linked.countries")
+                            jsvat-input(jsvat-model="models.linked")
+                            div(ng-bind="'IsValid: ' + models.linked.isValid")
+                            div(ng-bind="'Value: ' + models.linked.value")
+                            div(ng-bind="'Countries: ' + models.linked.countries")
+                            button(ng-click="models.linked.value='GB004123443'") Set Value
+                    li
+                        section
+                            h3 Predefined String
+                            jsvat-input.some_class(jsvat-model="models.predefinedStr")
+                            div(ng-bind="'IsValid: ' + models.predefinedStr.isValid")
+                            div(ng-bind="'Value: ' + models.predefinedStr.value")
+                            div(ng-bind="'Countries: ' + models.predefinedStr.countries")
+                            button(ng-click="models.predefinedStr.value='SK2020431710'") Set Value
+                    li
+                        section
+                            h3 Predefined Empty String
+                            jsvat-input.some_class(jsvat-model="models.predefinedEmptyStr")
+                            div(ng-bind="'IsValid: ' + models.predefinedEmptyStr.isValid")
+                            div(ng-bind="'Value: ' + models.predefinedEmptyStr.value")
+                            div(ng-bind="'Countries: ' + models.predefinedEmptyStr.countries")
+                            button(ng-click="models.predefinedEmptyStr.value='PL5262823001'") Set Value
+                    li
+                        section
+                            h3 Predefined Object 
+                            jsvat-input.some_class(jsvat-model="models.predefinedObj")
+                            div(ng-bind="'IsValid: ' + models.predefinedObj.isValid")
+                            div(ng-bind="'Value: ' + models.predefinedObj.value")
+                            div(ng-bind="'Countries: ' + models.predefinedObj.countries")
+                            button(ng-click="models.predefinedObj.value='LV40003280118'") Set Value
+                    li
+                        section
+                            h3 Predefined Empty Object 
+                            jsvat-input.some_class(jsvat-model="models.predefinedEmptyObj")
+                            div(ng-bind="'IsValid: ' + models.predefinedEmptyObj.isValid")
+                            div(ng-bind="'Value: ' + models.predefinedEmptyObj.value")
+                            div(ng-bind="'Countries: ' + models.predefinedEmptyObj.countries")
+                            button(ng-click="models.predefinedEmptyObj.value='IE0000020F'") Set Value
+                    li
+                        section
+                            h3 Predefined Shit 
+                            jsvat-input.some_class(jsvat-model="models.predefinedNumberObj")
+                            div(ng-bind="'IsValid: ' + models.predefinedNumberObj.isValid")
+                            div(ng-bind="'Value: ' + models.predefinedNumberObj.value")
+                            div(ng-bind="'Countries: ' + models.predefinedNumberObj.countries")
+                            button(ng-click="models.predefinedNumberObj.value='FR47000000141'") Set Value
