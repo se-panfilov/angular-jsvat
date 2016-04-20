@@ -2,7 +2,7 @@
 
 angular.module('angular-jsvat-input', [])
 
-    .directive('jsvatInput', ['$compile', 'JsVatFactory', function ($compile, JsVatFactory) {
+    .directive('jsvatInput', ['JsVatFactory', function (JsVatFactory) {
       return {
         restrict: 'E',//TODO (S.Panfilov) Perhaps shuld be "A" restriction
         replace: true,
