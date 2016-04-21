@@ -4,9 +4,7 @@ angular.module('demo', ['angular-jsvat'])
 
     .controller('DemoPageCtrl', function ($scope, JsVatFactory) {
 
-      $scope.result = {
-        common: {isValid: false}
-      };
+      $scope.result = {};
 
       $scope.$watch('result.common', function (val) {
         console.log(val);
