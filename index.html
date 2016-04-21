@@ -33,10 +33,10 @@
           <li>
             <section>
               <h3>Common</h3>
-              <input jsvat="result.common" type="text" ng-model="models.common">
+              <input jsvat jsvat-result="result.common" type="text" ng-model="models.common">
               <div ng-bind="'IsValid: ' + result.common.isValid"></div>
               <div ng-bind="'Value: ' + result.common.value"></div>
-              <div ng-bind="'Countries: ' + result.common.countries"></div>
+              <div ng-bind="'Country: ' + result.common.country"></div>
               <button ng-click="models.common.value='EL000000141'">Set Value</button>
             </section>
           </li>
@@ -46,7 +46,7 @@
           <!--        jsvat-input.some_class(jsvat-model="models.common2")-->
           <!--        div(ng-bind="'IsValid: ' + models.common2.isValid")-->
           <!--        div(ng-bind="'Value: ' + models.common2.value")-->
-          <!--        div(ng-bind="'Countries: ' + models.common2.countries")-->
+          <!--        div(ng-bind="'Country: ' + models.common2.country")-->
           <!--        button(ng-click="models.common2.value='ESA09130790'") Set Value-->
           <!--li-->
           <!--    section-->
@@ -54,11 +54,11 @@
           <!--        input(jsvat, type="text", ng-model="models.linked")-->
           <!--        div(ng-bind="'IsValid: ' + models.linked.isValid")-->
           <!--        div(ng-bind="'Value: ' + models.linked.value")-->
-          <!--        div(ng-bind="'Countries: ' + models.linked.countries")-->
+          <!--        div(ng-bind="'Country: ' + models.linked.country")-->
           <!--        input(jsvat, type="text", ng-model="models.linked")-->
           <!--        div(ng-bind="'IsValid: ' + models.linked.isValid")-->
           <!--        div(ng-bind="'Value: ' + models.linked.value")-->
-          <!--        div(ng-bind="'Countries: ' + models.linked.countries")-->
+          <!--        div(ng-bind="'Country: ' + models.linked.country")-->
           <!--        button(ng-click="models.linked.value='GB004123443'") Set Value-->
           <!--li-->
           <!--    section-->
@@ -66,7 +66,7 @@
           <!--        jsvat-input.some_class(jsvat-model="models.predefinedStr")-->
           <!--        div(ng-bind="'IsValid: ' + models.predefinedStr.isValid")-->
           <!--        div(ng-bind="'Value: ' + models.predefinedStr.value")-->
-          <!--        div(ng-bind="'Countries: ' + models.predefinedStr.countries")-->
+          <!--        div(ng-bind="'Country: ' + models.predefinedStr.country")-->
           <!--        button(ng-click="models.predefinedStr.value='SK2020431710'") Set Value-->
           <!--li-->
           <!--    section-->
@@ -74,7 +74,7 @@
           <!--        jsvat-input.some_class(jsvat-model="models.predefinedEmptyStr")-->
           <!--        div(ng-bind="'IsValid: ' + models.predefinedEmptyStr.isValid")-->
           <!--        div(ng-bind="'Value: ' + models.predefinedEmptyStr.value")-->
-          <!--        div(ng-bind="'Countries: ' + models.predefinedEmptyStr.countries")-->
+          <!--        div(ng-bind="'Country: ' + models.predefinedEmptyStr.country")-->
           <!--        button(ng-click="models.predefinedEmptyStr.value='PL5262823001'") Set Value-->
           <!--li-->
           <!--    section-->
@@ -82,7 +82,7 @@
           <!--        jsvat-input.some_class(jsvat-model="models.predefinedObj")-->
           <!--        div(ng-bind="'IsValid: ' + models.predefinedObj.isValid")-->
           <!--        div(ng-bind="'Value: ' + models.predefinedObj.value")-->
-          <!--        div(ng-bind="'Countries: ' + models.predefinedObj.countries")-->
+          <!--        div(ng-bind="'Country: ' + models.predefinedObj.country")-->
           <!--        button(ng-click="models.predefinedObj.value='LV40003280118'") Set Value-->
           <!--li-->
           <!--    section-->
@@ -90,7 +90,7 @@
           <!--        jsvat-input.some_class(jsvat-model="models.predefinedEmptyObj")-->
           <!--        div(ng-bind="'IsValid: ' + models.predefinedEmptyObj.isValid")-->
           <!--        div(ng-bind="'Value: ' + models.predefinedEmptyObj.value")-->
-          <!--        div(ng-bind="'Countries: ' + models.predefinedEmptyObj.countries")-->
+          <!--        div(ng-bind="'Country: ' + models.predefinedEmptyObj.country")-->
           <!--        button(ng-click="models.predefinedEmptyObj.value='IE0000020F'") Set Value-->
           <!--li-->
           <!--    section-->
@@ -98,7 +98,7 @@
           <!--        jsvat-input.some_class(jsvat-model="models.predefinedNumberObj")-->
           <!--        div(ng-bind="'IsValid: ' + models.predefinedNumberObj.isValid")-->
           <!--        div(ng-bind="'Value: ' + models.predefinedNumberObj.value")-->
-          <!--        div(ng-bind="'Countries: ' + models.predefinedNumberObj.countries")-->
+          <!--        div(ng-bind="'Country: ' + models.predefinedNumberObj.country")-->
           <!--        button(ng-click="models.predefinedNumberObj.value='FR47000000141'") Set Value-->
           <!--li-->
           <!--    section-->
@@ -115,7 +115,7 @@
           <!--        )-->
           <!--        div(ng-bind="'IsValid: ' + models.allAtrs.isValid")-->
           <!--        div(ng-bind="'Value: ' + models.allAtrs.value")-->
-          <!--        div(ng-bind="'Countries: ' + models.allAtrs.countries")-->
+          <!--        div(ng-bind="'Country: ' + models.allAtrs.country")-->
           <!--        button(ng-click="models.allAtrs.value='EL000000141'") Set Value-->
           <!--li-->
           <!--    section-->
@@ -123,7 +123,7 @@
           <!--        input(jsvat, type="text", ng-model="models.required" required)-->
           <!--        div(ng-bind="'IsValid: ' + models.required.isValid")-->
           <!--        div(ng-bind="'Value: ' + models.required.value")-->
-          <!--        div(ng-bind="'Countries: ' + models.required.countries")-->
+          <!--        div(ng-bind="'Country: ' + models.required.country")-->
           <!--        button(ng-click="models.required.value='EL000000141'") Set Value-->
           <!--li-->
           <!--    section-->
@@ -131,7 +131,7 @@
           <!--        input(jsvat, type="text", ng-model="models.ngRequired" ng-required="true")-->
           <!--        div(ng-bind="'IsValid: ' + models.ngRequired.isValid")-->
           <!--        div(ng-bind="'Value: ' + models.ngRequired.value")-->
-          <!--        div(ng-bind="'Countries: ' + models.ngRequired.countries")-->
+          <!--        div(ng-bind="'Country: ' + models.ngRequired.country")-->
           <!--        button(ng-click="models.ngRequired.value='EL000000141'") Set Value-->
         </ol>
       </div>

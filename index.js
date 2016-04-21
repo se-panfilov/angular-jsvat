@@ -5,8 +5,12 @@ angular.module('demo', ['angular-jsvat'])
     .controller('DemoPageCtrl', function ($scope, JsVatFactory) {
 
       $scope.result = {
-        
+        common: {isValid: false}
       };
+
+      $scope.$watch('result.common', function (val) {
+        console.log(val);
+      }, true);
 
       $scope.models = {
         predefinedStr: 'CY00001067Y',
