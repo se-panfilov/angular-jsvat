@@ -30,7 +30,7 @@ html#ng-app(xmlns:ng='http://angularjs.org', ng-app='demo', lang='en')
                     li
                         section
                             h3 Common
-                            input(jsvat jsvat-result="result.common", type="text", ng-model="models.common")
+                            input(jsvat="result.common", type="text", ng-model="models.common")
                             div(ng-bind="'IsValid: ' + result.common.isValid")
                             div(ng-bind="'Value: ' + result.common.value")
                             div(ng-bind="'Country: ' + result.common.country")
