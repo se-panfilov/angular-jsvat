@@ -2,7 +2,7 @@
 
 angular.module('angular-jsvat-input', [])
 
-    .directive('jsvat', ['$compile', 'JsVatFactory', function (JsVatFactory) {
+    .directive('jsvat', ['JsVatFactory', function (JsVatFactory) {
       return {
         restrict: 'A',
         scope: {
@@ -10,7 +10,7 @@ angular.module('angular-jsvat-input', [])
           jsvatConfig: '=?'
         },
         require: 'ngModel',
-        link: function (scope, element) {
+        link: function (scope, element, attrs) {
           function makeObj(name) {
             if (!angular.isObject(scope[name])) {
               var value = scope[name];
@@ -20,7 +20,7 @@ angular.module('angular-jsvat-input', [])
             }
           }
 
-          makeObj('jsvatResult');
+          makeObj('jsvat');
           makeObj('jsvatConfig');
 
           // var invalid = '-invalid';
@@ -41,7 +41,11 @@ angular.module('angular-jsvat-input', [])
             setValidity(scope.jsvatResult.isValid);
           };
 
-          scope.$watch('ngModel', function (val) {
+
+          console.log(scope.jsvatResult);
+          scope.$watch(function(){
+            return modelController.$modelValue;
+          }, function (val) {
             scope.checkVAT(val);
           });
 

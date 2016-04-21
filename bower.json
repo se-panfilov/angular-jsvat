@@ -39,6 +39,6 @@
   "private": false,
   "dependencies": {},
   "devDependencies": {
-    "jsvat": "git@github.com:se-panfilov/jsvat.git#dev"
+    "jsvat": "git@github.com:se-panfilov/jsvat.git"
   }
 }
