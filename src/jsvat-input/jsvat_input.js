@@ -6,7 +6,7 @@ angular.module('angular-jsvat-input', [])
       return {
         restrict: 'A',
         scope: {
-          jsvatResult: '=?'
+          jsvat: '=?'
         },
         require: 'ngModel',
         link: function (scope, element) {
