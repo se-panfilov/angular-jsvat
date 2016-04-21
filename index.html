@@ -16,6 +16,19 @@
   <body>
     <div id="content_view" class="container">
       <div id="demo_page" ng-controller="DemoPageCtrl">
+        <h3>Global config</h3>
+        <ul>
+          <li>
+            <button type="button" ng-click="globalConfig('united_kingdom')">UK</button>
+          </li>
+          <li>
+            <button type="button" ng-click="globalConfig('spain')">Spain</button>
+          </li>
+          <li>
+            <button type="button" ng-click="globalConfig('france')">France</button>
+          </li>
+        </ul>
+        <div ng-bind="getConfig()"></div>
         <ol>
           <li>
             <section>
@@ -24,15 +37,7 @@
               <div ng-bind="'IsValid: ' + models.common.isValid"></div>
               <div ng-bind="'Value: ' + models.common.value"></div>
               <div ng-bind="'Countries: ' + models.common.countries"></div>
-              <button ng-click="models.common.value='EL000000141'">Set Valueli</button>
-            </section>
-            <section>
-              <h3>Common with lavel</h3>
-              <jsvat-input jsvat-model="models.commonLbl"></jsvat-input>
-              <div ng-bind="'IsValid: ' + models.commonLbl.isValid"></div>
-              <div ng-bind="'Value: ' + models.commonLbl.value"></div>
-              <div ng-bind="'Countries: ' + models.commonLbl.countries"></div>
-              <button ng-click="models.commonLbl.value='EL000000141'">Set Value</button>
+              <button ng-click="models.common.value='EL000000141'">Set Value</button>
             </section>
           </li>
           <li>

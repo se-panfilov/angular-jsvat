@@ -17,6 +17,15 @@ html#ng-app(xmlns:ng='http://angularjs.org', ng-app='demo', lang='en')
     body
         #content_view.container
             #demo_page(ng-controller="DemoPageCtrl")
+                h3 Global config
+                ul
+                    li
+                        button(type="button", ng-click="globalConfig('united_kingdom')") UK
+                    li
+                        button(type="button", ng-click="globalConfig('spain')") Spain
+                    li
+                        button(type="button", ng-click="globalConfig('france')") France
+                div(ng-bind="getConfig()")
                 ol
                     li
                         section
@@ -25,14 +34,7 @@ html#ng-app(xmlns:ng='http://angularjs.org', ng-app='demo', lang='en')
                             div(ng-bind="'IsValid: ' + models.common.isValid")
                             div(ng-bind="'Value: ' + models.common.value")
                             div(ng-bind="'Countries: ' + models.common.countries")
-                            button(ng-click="models.common.value='EL000000141'") Set Valueli
-                        section
-                            h3 Common with lavel
-                            jsvat-input(jsvat-model="models.commonLbl")
-                            div(ng-bind="'IsValid: ' + models.commonLbl.isValid")
-                            div(ng-bind="'Value: ' + models.commonLbl.value")
-                            div(ng-bind="'Countries: ' + models.commonLbl.countries")
-                            button(ng-click="models.commonLbl.value='EL000000141'") Set Value
+                            button(ng-click="models.common.value='EL000000141'") Set Value
                     li
                         section
                             h3 Common (make sure no affects)

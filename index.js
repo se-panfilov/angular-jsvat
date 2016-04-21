@@ -2,7 +2,7 @@
 
 angular.module('demo', ['angular-jsvat'])
 
-    .controller('DemoPageCtrl', function ($scope) {
+    .controller('DemoPageCtrl', function ($scope, JsVatFactory) {
 
       $scope.models = {
         common: null,
@@ -17,6 +17,17 @@ angular.module('demo', ['angular-jsvat'])
         predefinedEmptyObj: {value: ''},
         predefinedNumberObj: 123
       };
+
+      $scope.globalConfig = function (name) {
+        JsVatFactory.config = {};
+        JsVatFactory.config[name] = true;
+      };
+
+      $scope.getConfig = function () {
+        return JSON.stringify(JsVatFactory.config);
+      };
+
+      $scope.JsVatFactory = JsVatFactory;
 
     })
 ;
