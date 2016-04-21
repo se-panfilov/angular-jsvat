@@ -4,7 +4,7 @@ angular.module('angular-jsvat-input', [])
 
     .directive('jsvatInput', ['$compile', 'JsVatFactory', function (JsVatFactory) {
       return {
-        restrict: 'E',//TODO (S.Panfilov) Perhaps shuld be "A" restriction
+        restrict: 'E',
         replace: true,
         templateUrl: 'jsvat_input.html',
         scope: {
