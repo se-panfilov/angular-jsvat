@@ -4,13 +4,11 @@ angular.module('demo', ['angular-jsvat'])
 
     .controller('DemoPageCtrl', function ($scope, JsVatFactory) {
 
+      $scope.result = {
+        
+      };
+
       $scope.models = {
-        common: null,
-        commonLbl: null,
-        linked: null,
-        required: null,
-        ngRequired: null,
-        allAtrs: null,
         predefinedStr: 'CY00001067Y',
         predefinedEmptyStr: 'CY00001067Y',
         predefinedObj: {value: 'EE100183238'},

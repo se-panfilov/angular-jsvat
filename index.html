@@ -33,117 +33,106 @@
           <li>
             <section>
               <h3>Common</h3>
-              <jsvat-input jsvat-model="models.common"></jsvat-input>
-              <div ng-bind="'IsValid: ' + models.common.isValid"></div>
-              <div ng-bind="'Value: ' + models.common.value"></div>
-              <div ng-bind="'Countries: ' + models.common.countries"></div>
+              <input jsvat="result.common" type="text" ng-model="models.common">
+              <div ng-bind="'IsValid: ' + result.common.isValid"></div>
+              <div ng-bind="'Value: ' + result.common.value"></div>
+              <div ng-bind="'Countries: ' + result.common.countries"></div>
               <button ng-click="models.common.value='EL000000141'">Set Value</button>
             </section>
           </li>
-          <li>
-            <section>
-              <h3>Common (make sure no affects)</h3>
-              <jsvat-input jsvat-model="models.common2" class="some_class"></jsvat-input>
-              <div ng-bind="'IsValid: ' + models.common2.isValid"></div>
-              <div ng-bind="'Value: ' + models.common2.value"></div>
-              <div ng-bind="'Countries: ' + models.common2.countries"></div>
-              <button ng-click="models.common2.value='ESA09130790'">Set Value</button>
-            </section>
-          </li>
-          <li>
-            <section>
-              <h3>Linked models</h3>
-              <jsvat-input jsvat-model="models.linked"></jsvat-input>
-              <div ng-bind="'IsValid: ' + models.linked.isValid"></div>
-              <div ng-bind="'Value: ' + models.linked.value"></div>
-              <div ng-bind="'Countries: ' + models.linked.countries"></div>
-              <jsvat-input jsvat-model="models.linked"></jsvat-input>
-              <div ng-bind="'IsValid: ' + models.linked.isValid"></div>
-              <div ng-bind="'Value: ' + models.linked.value"></div>
-              <div ng-bind="'Countries: ' + models.linked.countries"></div>
-              <button ng-click="models.linked.value='GB004123443'">Set Value</button>
-            </section>
-          </li>
-          <li>
-            <section>
-              <h3>Predefined String</h3>
-              <jsvat-input jsvat-model="models.predefinedStr" class="some_class"></jsvat-input>
-              <div ng-bind="'IsValid: ' + models.predefinedStr.isValid"></div>
-              <div ng-bind="'Value: ' + models.predefinedStr.value"></div>
-              <div ng-bind="'Countries: ' + models.predefinedStr.countries"></div>
-              <button ng-click="models.predefinedStr.value='SK2020431710'">Set Value</button>
-            </section>
-          </li>
-          <li>
-            <section>
-              <h3>Predefined Empty String</h3>
-              <jsvat-input jsvat-model="models.predefinedEmptyStr" class="some_class"></jsvat-input>
-              <div ng-bind="'IsValid: ' + models.predefinedEmptyStr.isValid"></div>
-              <div ng-bind="'Value: ' + models.predefinedEmptyStr.value"></div>
-              <div ng-bind="'Countries: ' + models.predefinedEmptyStr.countries"></div>
-              <button ng-click="models.predefinedEmptyStr.value='PL5262823001'">Set Value</button>
-            </section>
-          </li>
-          <li>
-            <section>
-              <h3>Predefined Object</h3>
-              <jsvat-input jsvat-model="models.predefinedObj" class="some_class"></jsvat-input>
-              <div ng-bind="'IsValid: ' + models.predefinedObj.isValid"></div>
-              <div ng-bind="'Value: ' + models.predefinedObj.value"></div>
-              <div ng-bind="'Countries: ' + models.predefinedObj.countries"></div>
-              <button ng-click="models.predefinedObj.value='LV40003280118'">Set Value</button>
-            </section>
-          </li>
-          <li>
-            <section>
-              <h3>Predefined Empty Object</h3>
-              <jsvat-input jsvat-model="models.predefinedEmptyObj" class="some_class"></jsvat-input>
-              <div ng-bind="'IsValid: ' + models.predefinedEmptyObj.isValid"></div>
-              <div ng-bind="'Value: ' + models.predefinedEmptyObj.value"></div>
-              <div ng-bind="'Countries: ' + models.predefinedEmptyObj.countries"></div>
-              <button ng-click="models.predefinedEmptyObj.value='IE0000020F'">Set Value</button>
-            </section>
-          </li>
-          <li>
-            <section>
-              <h3>Predefined Shit</h3>
-              <jsvat-input jsvat-model="models.predefinedNumberObj" class="some_class"></jsvat-input>
-              <div ng-bind="'IsValid: ' + models.predefinedNumberObj.isValid"></div>
-              <div ng-bind="'Value: ' + models.predefinedNumberObj.value"></div>
-              <div ng-bind="'Countries: ' + models.predefinedNumberObj.countries"></div>
-              <button ng-click="models.predefinedNumberObj.value='FR47000000141'">Set Value</button>
-            </section>
-          </li>
-          <li>
-            <section>
-              <h3>All Atrs</h3>
-              <jsvat-input name="my_vat" jsvat-model="models.allAtrs" required readonly disabled="disabled" maxlength="10" minlength="1" size="5"></jsvat-input>
-              <div ng-bind="'IsValid: ' + models.allAtrs.isValid"></div>
-              <div ng-bind="'Value: ' + models.allAtrs.value"></div>
-              <div ng-bind="'Countries: ' + models.allAtrs.countries"></div>
-              <button ng-click="models.allAtrs.value='EL000000141'">Set Value</button>
-            </section>
-          </li>
-          <li>
-            <section>
-              <h3>Required</h3>
-              <jsvat-input jsvat-model="models.required" required></jsvat-input>
-              <div ng-bind="'IsValid: ' + models.required.isValid"></div>
-              <div ng-bind="'Value: ' + models.required.value"></div>
-              <div ng-bind="'Countries: ' + models.required.countries"></div>
-              <button ng-click="models.required.value='EL000000141'">Set Value</button>
-            </section>
-          </li>
-          <li>
-            <section>
-              <h3>ngRequired</h3>
-              <jsvat-input jsvat-model="models.ngRequired" ng-required="true"></jsvat-input>
-              <div ng-bind="'IsValid: ' + models.ngRequired.isValid"></div>
-              <div ng-bind="'Value: ' + models.ngRequired.value"></div>
-              <div ng-bind="'Countries: ' + models.ngRequired.countries"></div>
-              <button ng-click="models.ngRequired.value='EL000000141'">Set Value</button>
-            </section>
-          </li>
+          <!--li-->
+          <!--    section-->
+          <!--        h3 Common (make sure no affects)-->
+          <!--        jsvat-input.some_class(jsvat-model="models.common2")-->
+          <!--        div(ng-bind="'IsValid: ' + models.common2.isValid")-->
+          <!--        div(ng-bind="'Value: ' + models.common2.value")-->
+          <!--        div(ng-bind="'Countries: ' + models.common2.countries")-->
+          <!--        button(ng-click="models.common2.value='ESA09130790'") Set Value-->
+          <!--li-->
+          <!--    section-->
+          <!--        h3 Linked models-->
+          <!--        input(jsvat, type="text", ng-model="models.linked")-->
+          <!--        div(ng-bind="'IsValid: ' + models.linked.isValid")-->
+          <!--        div(ng-bind="'Value: ' + models.linked.value")-->
+          <!--        div(ng-bind="'Countries: ' + models.linked.countries")-->
+          <!--        input(jsvat, type="text", ng-model="models.linked")-->
+          <!--        div(ng-bind="'IsValid: ' + models.linked.isValid")-->
+          <!--        div(ng-bind="'Value: ' + models.linked.value")-->
+          <!--        div(ng-bind="'Countries: ' + models.linked.countries")-->
+          <!--        button(ng-click="models.linked.value='GB004123443'") Set Value-->
+          <!--li-->
+          <!--    section-->
+          <!--        h3 Predefined String-->
+          <!--        jsvat-input.some_class(jsvat-model="models.predefinedStr")-->
+          <!--        div(ng-bind="'IsValid: ' + models.predefinedStr.isValid")-->
+          <!--        div(ng-bind="'Value: ' + models.predefinedStr.value")-->
+          <!--        div(ng-bind="'Countries: ' + models.predefinedStr.countries")-->
+          <!--        button(ng-click="models.predefinedStr.value='SK2020431710'") Set Value-->
+          <!--li-->
+          <!--    section-->
+          <!--        h3 Predefined Empty String-->
+          <!--        jsvat-input.some_class(jsvat-model="models.predefinedEmptyStr")-->
+          <!--        div(ng-bind="'IsValid: ' + models.predefinedEmptyStr.isValid")-->
+          <!--        div(ng-bind="'Value: ' + models.predefinedEmptyStr.value")-->
+          <!--        div(ng-bind="'Countries: ' + models.predefinedEmptyStr.countries")-->
+          <!--        button(ng-click="models.predefinedEmptyStr.value='PL5262823001'") Set Value-->
+          <!--li-->
+          <!--    section-->
+          <!--        h3 Predefined Object-->
+          <!--        jsvat-input.some_class(jsvat-model="models.predefinedObj")-->
+          <!--        div(ng-bind="'IsValid: ' + models.predefinedObj.isValid")-->
+          <!--        div(ng-bind="'Value: ' + models.predefinedObj.value")-->
+          <!--        div(ng-bind="'Countries: ' + models.predefinedObj.countries")-->
+          <!--        button(ng-click="models.predefinedObj.value='LV40003280118'") Set Value-->
+          <!--li-->
+          <!--    section-->
+          <!--        h3 Predefined Empty Object-->
+          <!--        jsvat-input.some_class(jsvat-model="models.predefinedEmptyObj")-->
+          <!--        div(ng-bind="'IsValid: ' + models.predefinedEmptyObj.isValid")-->
+          <!--        div(ng-bind="'Value: ' + models.predefinedEmptyObj.value")-->
+          <!--        div(ng-bind="'Countries: ' + models.predefinedEmptyObj.countries")-->
+          <!--        button(ng-click="models.predefinedEmptyObj.value='IE0000020F'") Set Value-->
+          <!--li-->
+          <!--    section-->
+          <!--        h3 Predefined Shit-->
+          <!--        jsvat-input.some_class(jsvat-model="models.predefinedNumberObj")-->
+          <!--        div(ng-bind="'IsValid: ' + models.predefinedNumberObj.isValid")-->
+          <!--        div(ng-bind="'Value: ' + models.predefinedNumberObj.value")-->
+          <!--        div(ng-bind="'Countries: ' + models.predefinedNumberObj.countries")-->
+          <!--        button(ng-click="models.predefinedNumberObj.value='FR47000000141'") Set Value-->
+          <!--li-->
+          <!--    section-->
+          <!--        h3 All Atrs-->
+          <!--        jsvat-input(-->
+          <!--        name="my_vat"-->
+          <!--        jsvat-model="models.allAtrs"-->
+          <!--        required-->
+          <!--        readonly-->
+          <!--        disabled="disabled"-->
+          <!--        maxlength="10"-->
+          <!--        minlength="1"-->
+          <!--        size="5"-->
+          <!--        )-->
+          <!--        div(ng-bind="'IsValid: ' + models.allAtrs.isValid")-->
+          <!--        div(ng-bind="'Value: ' + models.allAtrs.value")-->
+          <!--        div(ng-bind="'Countries: ' + models.allAtrs.countries")-->
+          <!--        button(ng-click="models.allAtrs.value='EL000000141'") Set Value-->
+          <!--li-->
+          <!--    section-->
+          <!--        h3 Required-->
+          <!--        input(jsvat, type="text", ng-model="models.required" required)-->
+          <!--        div(ng-bind="'IsValid: ' + models.required.isValid")-->
+          <!--        div(ng-bind="'Value: ' + models.required.value")-->
+          <!--        div(ng-bind="'Countries: ' + models.required.countries")-->
+          <!--        button(ng-click="models.required.value='EL000000141'") Set Value-->
+          <!--li-->
+          <!--    section-->
+          <!--        h3 ngRequired-->
+          <!--        input(jsvat, type="text", ng-model="models.ngRequired" ng-required="true")-->
+          <!--        div(ng-bind="'IsValid: ' + models.ngRequired.isValid")-->
+          <!--        div(ng-bind="'Value: ' + models.ngRequired.value")-->
+          <!--        div(ng-bind="'Countries: ' + models.ngRequired.countries")-->
+          <!--        button(ng-click="models.ngRequired.value='EL000000141'") Set Value-->
         </ol>
       </div>
     </div>
