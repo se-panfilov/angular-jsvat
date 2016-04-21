@@ -2,15 +2,14 @@
 
 angular.module('angular-jsvat-input', [])
 
-    .directive('jsvat', ['JsVatFactory', function (JsVatFactory) {
+    .directive('jsvat', function (JsVatFactory) {
       return {
         restrict: 'A',
         scope: {
-          jsvatResult: '=?',
-          jsvatConfig: '=?'
+          jsvatResult: '=?'
         },
         require: 'ngModel',
-        link: function (scope, element, attrs) {
+        link: function (scope, element) {
           function makeObj(name) {
             if (!angular.isObject(scope[name])) {
               var value = scope[name];
@@ -21,29 +20,32 @@ angular.module('angular-jsvat-input', [])
           }
 
           makeObj('jsvat');
-          makeObj('jsvatConfig');
 
-          // var invalid = '-invalid';
-          // var valid = '-valid';
+          var invalid = '-jsvat-invalid';
+          var valid = '-jsvat-valid';
 
           function setValidity(isValid) {
-            //scope.classObj[invalid] = !isValid;
-            //scope.classObj[valid] = isValid;
+            if (isValid) {
+              element.addClass(valid);
+              element.removeClass(invalid);
+            } else {
+              element.addClass(invalid);
+              element.removeClass(valid);
+            }
+
             modelController.$setValidity('vat', isValid);
           }
 
           var modelController = element.controller('ngModel');
 
           scope.checkVAT = function (vat) {
-            scope.jsvatResult = JsVatFactory.checkVAT(vat);
-            // var isEmpty = scope.jsvatResult.value === '' || (!scope.jsvatResult.value && scope.jsvatResult.value !== '0');
-            // setValidity(result.isValid || isEmpty);
-            setValidity(scope.jsvatResult.isValid);
+            scope.jsvat = JsVatFactory.checkVAT(vat);
+            var isEmpty = scope.jsvat.value === '' || (!scope.jsvat.value && scope.jsvat.value !== '0');
+            setValidity(scope.jsvat.isValid || isEmpty);
+            //setValidity(scope.jsvat.isValid);
           };
 
-
-          console.log(scope.jsvatResult);
-          scope.$watch(function(){
+          scope.$watch(function () {
             return modelController.$modelValue;
           }, function (val) {
             scope.checkVAT(val);
@@ -51,5 +53,5 @@ angular.module('angular-jsvat-input', [])
 
         }
       }
-    }])
+    })
 ;
