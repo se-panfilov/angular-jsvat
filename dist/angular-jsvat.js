@@ -1,4 +1,4 @@
-angular.module('angular-jsvat', ['angular-jsvat.templates', 'angular-jsvat-input'])
+angular.module('angular-jsvat', ['angular-jsvat-input'])
 
 .factory('JsVatFactory', function() {
 
@@ -27,65 +27,46 @@ angular.module('angular-jsvat', ['angular-jsvat.templates', 'angular-jsvat-input
       return result;
     }
 
-    function getClearVAT(vat) {
+    function _getPureVAT(vat) {
       return vat.toString().toUpperCase().replace(/(\s|-|\.)+/g, '');
     }
 
-    function _makeArr(regex) {
-      if (!Array.isArray(regex)) {
-        return [regex];
-      }
+    function _isCountryBlocked(config, countryName) {
+      if (!config || config.length === 0) return false;
 
-      return regex;
+      return config.indexOf(countryName) === -1;
     }
 
-    function isCountryBlocked(config, countryName) {
-      if (!config || Object.keys(config).length === 0) return false;
-
-      var country = config[countryName];
-
-      return (country === null || country === null) ? true : !country;
+    function checkValidity(vat, countryName) {
+      var regexArr = COUNTRIES[countryName].rules.regex;
+      for (var i = 0; i < regexArr.length; i++) {
+        var isValid = _validate(vat, regexArr[i], countryName);
+        if (isValid) return isValid && !_isCountryBlocked(exports.config, countryName);
+      }
+      return false;
     }
 
     var exports = {
-      config: {},
-      checkVAT: function(vat, isDetailed) {
-        if (!vat) return false;
-
-        vat = getClearVAT(vat);
-
+      config: [],
+      checkVAT: function(vat) {
         var result = {
+          value: _getPureVAT(vat),
           isValid: false,
-          countries: []
+          country: null
         };
+
+        if (!vat) return result;
 
         for (var countryName in COUNTRIES) {
           if (COUNTRIES.hasOwnProperty(countryName)) {
 
-            //Make sure country check not skipped in config
-            if (!isCountryBlocked(exports.config, countryName)) {
-
-              var regexArr = _makeArr(COUNTRIES[countryName].rules.regex);
-              for (var i = 0; i < regexArr.length; i++) {
-
-                //If once become a true, shouldn't be a false any more
-                result.isValid = (_validate(vat, regexArr[i], countryName)) ? true : result.isValid;
-
-
-                if (!isDetailed && result.isValid) return result.isValid;
-
-                var isValidForCurrCountry = _validate(vat, regexArr[i], countryName);
-
-                if (isValidForCurrCountry) {
-                  result.countries.push(countryName);
-                }
-              }
-
-            }
+            result.isValid = checkValidity(result.value, countryName);
+            result.country = countryName;
+            if (result.isValid) return result;
           }
         }
 
-        return isDetailed ? result : result.isValid;
+        return result;
 
       }
     };
@@ -119,7 +100,7 @@ angular.module('angular-jsvat', ['angular-jsvat.templates', 'angular-jsvat-input
           2,
           1
         ],
-        regex: /^(AT)U(\d{8})$/
+        regex: [/^(AT)U(\d{8})$/]
       }
     };
     COUNTRIES.belgium = {
@@ -134,7 +115,7 @@ angular.module('angular-jsvat', ['angular-jsvat.templates', 'angular-jsvat-input
         return check === +vat.slice(8, 10);
       },
       rules: {
-        regex: /^(BE)(0?\d{9})$/
+        regex: [/^(BE)(0?\d{9})$/]
       }
     };
     COUNTRIES.bulgaria = (function() {
@@ -264,7 +245,7 @@ angular.module('angular-jsvat', ['angular-jsvat.templates', 'angular-jsvat-input
               2
             ]
           },
-          regex: /^(BG)(\d{9,10})$/
+          regex: [/^(BG)(\d{9,10})$/]
         }
       };
     })();
@@ -293,7 +274,7 @@ angular.module('angular-jsvat', ['angular-jsvat.templates', 'angular-jsvat-input
         return (product + expect) % 10 === 1;
       },
       rules: {
-        regex: /^(HR)(\d{11})$/
+        regex: [/^(HR)(\d{11})$/]
       }
     };
     COUNTRIES.cyprus = {
@@ -341,7 +322,7 @@ angular.module('angular-jsvat', ['angular-jsvat.templates', 'angular-jsvat-input
         return total === expect;
       },
       rules: {
-        regex: /^(CY)([0-59]\d{7}[A-Z])$/
+        regex: [/^(CY)([0-59]\d{7}[A-Z])$/]
       }
     };
     COUNTRIES.czech_republic = (function() {
@@ -433,7 +414,7 @@ angular.module('angular-jsvat', ['angular-jsvat.templates', 'angular-jsvat-input
             9,
             10
           ],
-          regex: /^(CZ)(\d{8,10})(\d{3})?$/,
+          regex: [/^(CZ)(\d{8,10})(\d{3})?$/],
           additional: [
             /^\d{8}$/,
             /^[0-5][0-9][0|1|5|6]\d[0-3]\d\d{3}$/,
@@ -464,7 +445,7 @@ angular.module('angular-jsvat', ['angular-jsvat.templates', 'angular-jsvat-input
           2,
           1
         ],
-        regex: /^(DK)(\d{8})$/
+        regex: [/^(DK)(\d{8})$/]
       }
     };
     COUNTRIES.estonia = {
@@ -496,7 +477,7 @@ angular.module('angular-jsvat', ['angular-jsvat.templates', 'angular-jsvat-input
           3,
           7
         ],
-        regex: /^(EE)(10\d{7})$/
+        regex: [/^(EE)(10\d{7})$/]
       }
     };
     COUNTRIES.europe = {
@@ -506,7 +487,7 @@ angular.module('angular-jsvat', ['angular-jsvat.templates', 'angular-jsvat-input
         return true;
       },
       rules: {
-        regex: /^(EU)(\d{9})$/
+        regex: [/^(EU)(\d{9})$/]
       }
     };
     COUNTRIES.finland = {
@@ -537,7 +518,7 @@ angular.module('angular-jsvat', ['angular-jsvat.templates', 'angular-jsvat-input
           4,
           2
         ],
-        regex: /^(FI)(\d{8})$/
+        regex: [/^(FI)(\d{8})$/]
       }
     };
     COUNTRIES.france = {
@@ -600,7 +581,7 @@ angular.module('angular-jsvat', ['angular-jsvat.templates', 'angular-jsvat-input
         return checkDigit === expect;
       },
       rules: {
-        regex: /^(DE)([1-9]\d{8})$/
+        regex: [/^(DE)([1-9]\d{8})$/]
       }
     };
     COUNTRIES.greece = {
@@ -639,7 +620,7 @@ angular.module('angular-jsvat', ['angular-jsvat.templates', 'angular-jsvat-input
           4,
           2
         ],
-        regex: /^(EL)(\d{9})$/
+        regex: [/^(EL)(\d{9})$/]
       }
     };
     COUNTRIES.hungary = {
@@ -670,7 +651,7 @@ angular.module('angular-jsvat', ['angular-jsvat.templates', 'angular-jsvat-input
           7,
           3
         ],
-        regex: /^(HU)(\d{8})$/
+        regex: [/^(HU)(\d{8})$/]
       }
     };
     COUNTRIES.ireland = {
@@ -779,7 +760,7 @@ angular.module('angular-jsvat', ['angular-jsvat.templates', 'angular-jsvat-input
           1,
           2
         ],
-        regex: /^(IT)(\d{11})$/
+        regex: [/^(IT)(\d{11})$/]
       }
     };
     COUNTRIES.latvia = {
@@ -827,7 +808,7 @@ angular.module('angular-jsvat', ['angular-jsvat.templates', 'angular-jsvat-input
           7,
           6
         ],
-        regex: /^(LV)(\d{11})$/
+        regex: [/^(LV)(\d{11})$/]
       }
     };
     COUNTRIES.lithunia = (function() {
@@ -976,7 +957,7 @@ angular.module('angular-jsvat', ['angular-jsvat.templates', 'angular-jsvat-input
             ]
           },
           check: /^\d{10}1/,
-          regex: /^(LT)(\d{9}|\d{12})$/
+          regex: [/^(LT)(\d{9}|\d{12})$/]
         }
       };
     }());
@@ -989,7 +970,7 @@ angular.module('angular-jsvat', ['angular-jsvat.templates', 'angular-jsvat-input
         return checkDigit === expect;
       },
       rules: {
-        regex: /^(LU)(\d{8})$/
+        regex: [/^(LU)(\d{8})$/]
       }
     };
     COUNTRIES.malta = {
@@ -1018,7 +999,7 @@ angular.module('angular-jsvat', ['angular-jsvat.templates', 'angular-jsvat-input
           8,
           9
         ],
-        regex: /^(MT)([1-9]\d{7})$/
+        regex: [/^(MT)([1-9]\d{7})$/]
       }
     };
     COUNTRIES.netherlands = {
@@ -1052,7 +1033,7 @@ angular.module('angular-jsvat', ['angular-jsvat.templates', 'angular-jsvat-input
           3,
           2
         ],
-        regex: /^(NL)(\d{9})B\d{2}$/
+        regex: [/^(NL)(\d{9})B\d{2}$/]
       }
     };
     COUNTRIES.norway = {
@@ -1090,7 +1071,7 @@ angular.module('angular-jsvat', ['angular-jsvat.templates', 'angular-jsvat-input
           3,
           2
         ],
-        regex: /^(NO)(\d{9})$/
+        regex: [/^(NO)(\d{9})$/]
       }
     };
     COUNTRIES.poland = {
@@ -1125,7 +1106,7 @@ angular.module('angular-jsvat', ['angular-jsvat.templates', 'angular-jsvat-input
           6,
           7
         ],
-        regex: /^(PL)(\d{10})$/
+        regex: [/^(PL)(\d{10})$/]
       }
     };
     COUNTRIES.portugal = {
@@ -1159,7 +1140,7 @@ angular.module('angular-jsvat', ['angular-jsvat.templates', 'angular-jsvat-input
           3,
           2
         ],
-        regex: /^(PT)(\d{9})$/
+        regex: [/^(PT)(\d{9})$/]
       }
     };
     COUNTRIES.romania = {
@@ -1195,7 +1176,7 @@ angular.module('angular-jsvat', ['angular-jsvat.templates', 'angular-jsvat-input
           3,
           2
         ],
-        regex: /^(RO)([1-9]\d{1,9})$/
+        regex: [/^(RO)([1-9]\d{1,9})$/]
       }
     };
     COUNTRIES.russia = (function() {
@@ -1305,7 +1286,7 @@ angular.module('angular-jsvat', ['angular-jsvat.templates', 'angular-jsvat-input
               0
             ]
           },
-          regex: /^(RU)(\d{10}|\d{12})$/
+          regex: [/^(RU)(\d{10}|\d{12})$/]
         }
       };
     }());
@@ -1333,7 +1314,7 @@ angular.module('angular-jsvat', ['angular-jsvat.templates', 'angular-jsvat-input
         return checkDigit === expect;
       },
       rules: {
-        regex: /^(RS)(\d{9})$/
+        regex: [/^(RS)(\d{9})$/]
       }
     };
     COUNTRIES.slovakia_republic = {
@@ -1343,7 +1324,7 @@ angular.module('angular-jsvat', ['angular-jsvat.templates', 'angular-jsvat-input
         return checkDigit === expect;
       },
       rules: {
-        regex: /^(SK)([1-9]\d[2346-9]\d{7})$/
+        regex: [/^(SK)([1-9]\d[2346-9]\d{7})$/]
       }
     };
     COUNTRIES.slovenia = {
@@ -1377,7 +1358,7 @@ angular.module('angular-jsvat', ['angular-jsvat.templates', 'angular-jsvat-input
           3,
           2
         ],
-        regex: /^(SI)([1-9]\d{7})$/
+        regex: [/^(SI)([1-9]\d{7})$/]
       }
     };
     COUNTRIES.spain = {
@@ -1495,7 +1476,7 @@ angular.module('angular-jsvat', ['angular-jsvat.templates', 'angular-jsvat-input
         return checkDigit === expect;
       },
       rules: {
-        regex: /^(SE)(\d{10}01)$/
+        regex: [/^(SE)(\d{10}01)$/]
       }
     };
     COUNTRIES.switzerland = {
@@ -1525,7 +1506,7 @@ angular.module('angular-jsvat', ['angular-jsvat.templates', 'angular-jsvat-input
           5,
           4
         ],
-        regex: /^(CHE)(\d{9})(MWST)?$/
+        regex: [/^(CHE)(\d{9})(MWST)?$/]
       }
     };
     COUNTRIES.united_kingdom = {
@@ -1615,54 +1596,50 @@ angular.module('angular-jsvat', ['angular-jsvat.templates', 'angular-jsvat-input
 
 angular.module('angular-jsvat-input', [])
 
-    .directive('jsvatInput', ['JsVatFactory', function (JsVatFactory) {
+    .directive('jsvat', ['JsVatFactory', function (JsVatFactory) {
       return {
-        restrict: 'E',
-        replace: true,
-        templateUrl: 'jsvat_input.html',
+        restrict: 'A',
         scope: {
-          jsvatModel: '='
+          jsvatResult: '=?',
+          jsvatConfig: '=?'
         },
+        require: 'ngModel',
         link: function (scope, element) {
-          var invalid = '-invalid';
-          var valid = '-valid';
-
-          scope.classObj = {};
-
-          if (!angular.isObject(scope.jsvatModel)) {
-            var value = scope.jsvatModel;
-            scope.jsvatModel = {
-              value: value
+          function makeObj(name) {
+            if (!angular.isObject(scope[name])) {
+              var value = scope[name];
+              scope[name] = {
+                value: value
+              }
             }
           }
 
+          makeObj('jsvatResult');
+          makeObj('jsvatConfig');
+
+          // var invalid = '-invalid';
+          // var valid = '-valid';
+
           function setValidity(isValid) {
-            scope.classObj[invalid] = !isValid;
-            scope.classObj[valid] = isValid;
+            //scope.classObj[invalid] = !isValid;
+            //scope.classObj[valid] = isValid;
             modelController.$setValidity('vat', isValid);
           }
 
           var modelController = element.controller('ngModel');
 
-          scope.checkVAT = function () {
-            var result = JsVatFactory.checkVAT(scope.jsvatModel.value, true);
-            scope.jsvatModel.isValid = result.isValid;
-            scope.jsvatModel.countries = result.countries;
-            var isEmpty = scope.jsvatModel.value === '' || (!scope.jsvatModel.value && scope.jsvatModel.value !== '0');
-            setValidity(result.isValid || isEmpty);
+          scope.checkVAT = function (vat) {
+            scope.jsvatResult = JsVatFactory.checkVAT(vat);
+            // var isEmpty = scope.jsvatResult.value === '' || (!scope.jsvatResult.value && scope.jsvatResult.value !== '0');
+            // setValidity(result.isValid || isEmpty);
+            setValidity(scope.jsvatResult.isValid);
           };
 
-          scope.$watch('jsvatModel.value', function () {
-            scope.checkVAT();
+          scope.$watch('ngModel', function (val) {
+            scope.checkVAT(val);
           });
-
-
-          if (scope.jsvatModel) {
-            scope.checkVAT();
-          }
 
         }
       }
     }])
 ;
-angular.module("angular-jsvat.templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("jsvat_input.html","<input type=\"text\" ng-model=\"jsvatModel.value\" ng-class=\"classObj\" class=\"jsvat-input__field\"/>");}]);
