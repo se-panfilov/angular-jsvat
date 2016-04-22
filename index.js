@@ -12,15 +12,16 @@ angular.module('demo', ['angular-jsvat'])
 
       $scope.models = {
         predefinedStr: 'CY00001067Y',
-        predefinedEmptyStr: 'CY00001067Y',
+        predefinedEmptyStr: '',
+        predefinedNull: '',
         predefinedObj: {value: 'EE100183238'},
-        predefinedEmptyObj: {value: ''},
-        predefinedNumberObj: 123
+        predefinedEmptyObj: {},
+        predefinedNumber: 123
       };
 
       $scope.globalConfig = function (name) {
-        JsVatFactory.config = {};
-        JsVatFactory.config[name] = true;
+        JsVatFactory.config = [];
+        JsVatFactory.config.push(name);
       };
 
       $scope.getConfig = function () {

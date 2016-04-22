@@ -25,7 +25,7 @@
             <button type="button" ng-click="globalConfig('spain')">Spain</button>
           </li>
           <li>
-            <button type="button" ng-click="globalConfig('france')">France</button>
+            <button type="button" ng-click="globalConfig('finland')">Finland</button>
           </li>
         </ul>
         <div ng-bind="getConfig()"></div>
@@ -42,23 +42,12 @@
           </li>
           <li>
             <section>
-              <h3>Common (make sure no affects)</h3>
-              <input jsvat="result.common2" type="text" ng-model="models.common2">
-              <div ng-bind="'IsValid: ' + result.common2.isValid"></div>
-              <div ng-bind="'Value: ' + result.common2.value"></div>
-              <div ng-bind="'Country: ' + result.common2.country"></div>
-              <button ng-click="models.common2='ESA09130790'">Set Value</button>
-            </section>
-          </li>
-          <li>
-            <section>
               <h3>Linked models</h3>
               <input jsvat="result.linked" type="text" ng-model="models.linked">
               <div ng-bind="'IsValid: ' + result.linked.isValid"></div>
               <div ng-bind="'Value: ' + result.linked.value"></div>
               <div ng-bind="'Country: ' + result.linked.country"></div>
-              <input jsvat="result.linked" type="text" ng-model="models.linked2">
-              <input jsvat type="text" ng-model="models.linked">
+              <input jsvat="result.linked2" type="text" ng-model="models.linked">
               <div ng-bind="'IsValid: ' + result.linked2.isValid"></div>
               <div ng-bind="'Value: ' + result.linked2.value"></div>
               <div ng-bind="'Country: ' + result.linked2.country"></div>
@@ -87,12 +76,32 @@
           </li>
           <li>
             <section>
-              <h3>All Atrs</h3>
-              <input name="my_vat" jsvat="result.allAtrs" ng-model="models.allAtrs" required readonly disabled="disabled" maxlength="10" minlength="1" size="5">
-              <div ng-bind="'IsValid: ' + result.allAtrs.isValid"></div>
-              <div ng-bind="'Value: ' + result.allAtrs.value"></div>
-              <div ng-bind="'Country: ' + result.allAtrs.country"></div>
-              <button ng-click="models.allAtrs='EL000000141'">Set Value</button>
+              <h3>Predefined Null String</h3>
+              <input jsvat="result.predefinedNull" type="text" ng-model="models.predefinedNull">
+              <div ng-bind="'IsValid: ' + result.predefinedNull.isValid"></div>
+              <div ng-bind="'Value: ' + result.predefinedNull.value"></div>
+              <div ng-bind="'Country: ' + result.predefinedNull.country"></div>
+              <button ng-click="models.predefinedNull='SK2020431710'">Set Value</button>
+            </section>
+          </li>
+          <li>
+            <section>
+              <h3>Predefined Empty Object</h3>
+              <input jsvat="result.predefinedEmptyObj" type="text" ng-model="models.predefinedEmptyObj">
+              <div ng-bind="'IsValid: ' + result.predefinedEmptyObj.isValid"></div>
+              <div ng-bind="'Value: ' + result.predefinedEmptyObj.value"></div>
+              <div ng-bind="'Country: ' + result.predefinedEmptyObj.country"></div>
+              <button ng-click="models.predefinedEmptyObj='SK2020431710'">Set Value</button>
+            </section>
+          </li>
+          <li>
+            <section>
+              <h3>Predefined Number Object</h3>
+              <input jsvat="result.predefinedNumber" type="text" ng-model="models.predefinedNumber">
+              <div ng-bind="'IsValid: ' + result.predefinedNumber.isValid"></div>
+              <div ng-bind="'Value: ' + result.predefinedNumber.value"></div>
+              <div ng-bind="'Country: ' + result.predefinedNumber.country"></div>
+              <button ng-click="models.predefinedNumber='SK2020431710'">Set Value</button>
             </section>
           </li>
         </ol>

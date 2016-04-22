@@ -24,7 +24,7 @@ html#ng-app(xmlns:ng='http://angularjs.org', ng-app='demo', lang='en')
                     li
                         button(type="button", ng-click="globalConfig('spain')") Spain
                     li
-                        button(type="button", ng-click="globalConfig('france')") France
+                        button(type="button", ng-click="globalConfig('finland')") Finland
                 div(ng-bind="getConfig()")
                 ol
                     li
@@ -37,21 +37,12 @@ html#ng-app(xmlns:ng='http://angularjs.org', ng-app='demo', lang='en')
                             button(ng-click="models.common='EL000000141'") Set Value
                     li
                         section
-                            h3 Common (make sure no affects)
-                            input(jsvat="result.common2", type="text", ng-model="models.common2")
-                            div(ng-bind="'IsValid: ' + result.common2.isValid")
-                            div(ng-bind="'Value: ' + result.common2.value")
-                            div(ng-bind="'Country: ' + result.common2.country")
-                            button(ng-click="models.common2='ESA09130790'") Set Value
-                    li
-                        section
                             h3 Linked models
                             input(jsvat="result.linked", type="text", ng-model="models.linked")
                             div(ng-bind="'IsValid: ' + result.linked.isValid")
                             div(ng-bind="'Value: ' + result.linked.value")
                             div(ng-bind="'Country: ' + result.linked.country")
-                            input(jsvat="result.linked", type="text", ng-model="models.linked2")
-                            input(jsvat, type="text", ng-model="models.linked")
+                            input(jsvat="result.linked2", type="text", ng-model="models.linked")
                             div(ng-bind="'IsValid: ' + result.linked2.isValid")
                             div(ng-bind="'Value: ' + result.linked2.value")
                             div(ng-bind="'Country: ' + result.linked2.country")
@@ -74,19 +65,25 @@ html#ng-app(xmlns:ng='http://angularjs.org', ng-app='demo', lang='en')
                             button(ng-click="models.predefinedEmptyStr='SK2020431710'") Set Value
                     li
                         section
-                            h3 All Atrs
-                            input(
-                            name="my_vat"
-                            jsvat="result.allAtrs"
-                            ng-model="models.allAtrs"
-                            required
-                            readonly
-                            disabled="disabled"
-                            maxlength="10"
-                            minlength="1"
-                            size="5"
-                            )
-                            div(ng-bind="'IsValid: ' + result.allAtrs.isValid")
-                            div(ng-bind="'Value: ' + result.allAtrs.value")
-                            div(ng-bind="'Country: ' + result.allAtrs.country")
-                            button(ng-click="models.allAtrs='EL000000141'") Set Value
+                            h3 Predefined Null String
+                            input(jsvat="result.predefinedNull", type="text", ng-model="models.predefinedNull")
+                            div(ng-bind="'IsValid: ' + result.predefinedNull.isValid")
+                            div(ng-bind="'Value: ' + result.predefinedNull.value")
+                            div(ng-bind="'Country: ' + result.predefinedNull.country")
+                            button(ng-click="models.predefinedNull='SK2020431710'") Set Value
+                    li
+                        section
+                            h3 Predefined Empty Object
+                            input(jsvat="result.predefinedEmptyObj", type="text", ng-model="models.predefinedEmptyObj")
+                            div(ng-bind="'IsValid: ' + result.predefinedEmptyObj.isValid")
+                            div(ng-bind="'Value: ' + result.predefinedEmptyObj.value")
+                            div(ng-bind="'Country: ' + result.predefinedEmptyObj.country")
+                            button(ng-click="models.predefinedEmptyObj='SK2020431710'") Set Value
+                    li
+                        section
+                            h3 Predefined Number Object
+                            input(jsvat="result.predefinedNumber", type="text", ng-model="models.predefinedNumber")
+                            div(ng-bind="'IsValid: ' + result.predefinedNumber.isValid")
+                            div(ng-bind="'Value: ' + result.predefinedNumber.value")
+                            div(ng-bind="'Country: ' + result.predefinedNumber.country")
+                            button(ng-click="models.predefinedNumber='SK2020431710'") Set Value
