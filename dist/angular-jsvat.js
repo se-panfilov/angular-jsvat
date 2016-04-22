@@ -62,8 +62,11 @@ angular.module('angular-jsvat', ['angular-jsvat-input'])
           if (COUNTRIES.hasOwnProperty(countryName)) {
 
             result.isValid = checkValidity(result.value, countryName);
-            result.country = countryName;
-            if (result.isValid) return result;
+
+            if (result.isValid) {
+              result.country = countryName;
+              return result;
+            }
           }
         }
 
