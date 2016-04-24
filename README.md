@@ -1,21 +1,61 @@
+
+
+[![Codacy Badge](https://api.codacy.com/project/badge/grade/6e444e53a23c4b32aeaff09864446989)](https://www.codacy.com/app/se-panfilov/angular-jsvat)
+[![bitHound Overall Score](https://www.bithound.io/github/se-panfilov/jsvat/badges/score.svg)](https://www.bithound.io/github/se-panfilov/angular-jsvat) [![bitHound Code](https://www.bithound.io/github/se-panfilov/jsvat/badges/code.svg)](https://www.bithound.io/github/se-panfilov/angular-jsvat)
+[![Code Climate](https://codeclimate.com/github/se-panfilov/angular-jsvat/badges/gpa.svg)](https://codeclimate.com/github/se-panfilov/angular-jsvat)
+[![Bower version](https://badge.fury.io/bo/angular-jsvat.svg)](http://badge.fury.io/bo/angular-jsvat)
+[![npm version](https://badge.fury.io/js/angular-jsvat.svg)](http://badge.fury.io/js/angular-jsvat)
 [![devDependency Status](https://david-dm.org/se-panfilov/angular-jsvat/dev-status.svg)](https://david-dm.org/se-panfilov/angular-jsvat#info=devDependencies)
+[![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/se-panfilov/angular-jsvat/blob/master/LICENSE)
+
+[![NPM](https://nodei.co/npm/angular-jsvat.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/angular-jsvat/)
 
 angular-jsvat
 -------
 [Demo and Examples][2]
 
-Check the validity of the format of an EU VAT number. No dependencies (except angularjs of course).
-
+Check the validity of the format of an EU VAT number. No dependencies.(except angularjs of course).
 
 What is it?
 --------
 
-Angular-js wrapper for [jsvat][1]
+Angular-js wrapper for [jsvat][1] (jsvat it's a core-logic for vat validation)
 
-jsvat is a small library to check validity of European (and few non-eu) VAT number. ([learn more][1] about VAT)
+angular-jsvat is a small library to check validity of European (and few non-eu) VAT number. ([learn more][1] about VAT)
 jsvat use 2-step check (see below) and didn't make any request for external resources.
 
 Each country has own regexp for VAT number and different math-logic of number calculating.
+
+For more details check [jsvat][1] repo.
+
+What angular-jsvat do?
+--------
+
+1. Provide `JsVatFactory` fcatory (just an angularjs wrapper for [jsvat][1])
+
+Just check is VAT number valid or not and which country this VAT is:
+
+  ```
+  JsVatFactory.checkVAT('BG131134023'); // {isValid: true, country: 'bulgaria', value: 'BG131134023'}
+  JsVatFactory.checkVAT('BG0433170001'); //{isValid: false, country: null, value: 'BG0433170001'}
+  JsVatFactory.checkVAT('atu5-150-7409');  //{isValid: true, country: 'austria', value: 'ATU51507409'}
+  JsVatFactory.checkVAT('aTU 5 804 4146');  //{isValid: true, country: 'austria', value: 'ATU58044146'}
+  ```
+
+You can specify list of allowed countries
+
+  ```
+  JsVatFactory.config = ['austria', 'belgium']; //All countries except 'austria' and 'belgium' would return false
+  JsVatFactory.checkVAT('BG131134023'); //valid VAT, but result would be 'false'
+  ```
+  
+To reset config just do `JsVatFactory.config = [];`
+
+ 2. Provide `jsvat` directive (for inputs)
+ 
+ ```
+ <input jsvat="result" type="text" ng-model="model">
+ ```
 
 Installation
 ----------
