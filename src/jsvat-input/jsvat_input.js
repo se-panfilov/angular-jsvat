@@ -15,7 +15,7 @@ angular.module('angular-jsvat-input', [])
               var value = scope[name];
               scope[name] = {
                 value: value
-              }
+              };
             }
           }
 
@@ -52,6 +52,6 @@ angular.module('angular-jsvat-input', [])
           });
 
         }
-      }
+      };
     })
 ;
