@@ -23,6 +23,7 @@ angular.module('angular-jsvat-input', [])
 
           var invalid = '-jsvat-invalid';
           var valid = '-jsvat-valid';
+          var modelController = element.controller('ngModel');
 
           function setValidity(isValid) {
             if (isValid) {
@@ -35,8 +36,6 @@ angular.module('angular-jsvat-input', [])
 
             modelController.$setValidity('vat', isValid);
           }
-
-          var modelController = element.controller('ngModel');
 
           scope.checkVAT = function (vat) {
             scope.jsvat = JsVatFactory.checkVAT(vat);
