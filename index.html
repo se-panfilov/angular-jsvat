@@ -1,6 +1,6 @@
 <!doctype html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Angular-jsvat by se-panfilov</title>
@@ -9,157 +9,196 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="javascripts/respond.js"></script>
     <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <!--[if lt IE 8]>
     <link rel="stylesheet" href="stylesheets/ie.css">
     <![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-  </head>
-  <body>
-      <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/se-panfilov/angular-jsvat">View On GitHub</a></li>
-          <li class="downloads"><a href="https://github.com/se-panfilov/angular-jsvat/zipball/master">ZIP</a></li>
-          <li class="downloads"><a href="https://github.com/se-panfilov/angular-jsvat/tarball/master">TAR</a></li>
-          <li class="title">DOWNLOADS</li>
-        </nav>
-      </div><!-- end header -->
+</head>
+<body>
+<div id="header">
+    <nav>
+        <li class="fork"><a href="https://github.com/se-panfilov/angular-jsvat">View On GitHub</a></li>
+        <li class="downloads"><a href="https://github.com/se-panfilov/angular-jsvat/zipball/master">ZIP</a></li>
+        <li class="downloads"><a href="https://github.com/se-panfilov/angular-jsvat/tarball/master">TAR</a></li>
+        <li class="title">DOWNLOADS</li>
+    </nav>
+</div><!-- end header -->
 
-    <div class="wrapper">
+<div class="wrapper">
 
-      <section>
+    <!--<section>-->
+    <!--<h3>Common</h3>-->
+    <!--<input jsvat="result.common" type="text" ng-model="models.common">-->
+    <!--<div ng-bind="'IsValid: ' + result.common.isValid"></div>-->
+    <!--<div ng-bind="'Value: ' + result.common.value"></div>-->
+    <!--<div ng-bind="'Country: ' + result.common.country"></div>-->
+    <!--<button ng-click="models.common='EL000000141'">Set Value</button>-->
+    <!--</section>-->
+
+    <section class="inner">
         <div id="title">
-          <h1>Angular-jsvat</h1>
-          <p>Check the validity of the format of an EU VAT number.</p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/se-panfilov">se-panfilov</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+            <h1>Angular-jsvat</h1>
+            <p>Check the validity of the format of an EU VAT number.</p>
+            <hr>
+            <span class="credits left">Project maintained by <a
+                    href="https://github.com/se-panfilov">se-panfilov</a></span>
+            <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a
+                    href="https://twitter.com/michigangraham">mattgraham</a></span>
         </div>
+    </section>
 
-        <p><a href="https://david-dm.org/se-panfilov/angular-jsvat#info=devDependencies"><img src="https://david-dm.org/se-panfilov/angular-jsvat/dev-status.svg" alt="devDependency Status"></a></p>
+    <section class="inner">
+        <h2>
+            <a id="angular-jsvat" class="anchor" href="#angular-jsvat" aria-hidden="true"><span
+                    class="octicon octicon-link"></span></a>angular-jsvat</h2>
 
-<h2>
-<a id="angular-jsvat" class="anchor" href="#angular-jsvat" aria-hidden="true"><span class="octicon octicon-link"></span></a>angular-jsvat</h2>
+        <p><a href="https://github.com/se-panfilov/jsvat">Demo and Examples</a></p>
 
-<p><a href="https://se-panfilov.github.io/angular-jsvat">Demo and Examples</a></p>
+        <p>Check the validity of the format of an EU VAT number. No dependencies(except angularjs of course).</p>
+    </section>
 
-<p>Check the validity of the format of an EU VAT number. No dependencies (except angularjs of course).</p>
+    <section class="inner">
+        <h2>
+            <a id="what-is-it" class="anchor" href="#what-is-it" aria-hidden="true"><span
+                    class="octicon octicon-link"></span></a>What is it?</h2>
 
-<h2>
-<a id="what-is-it" class="anchor" href="#what-is-it" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is it?</h2>
+        <p>Angular-js wrapper for <a href="https://github.com/se-panfilov/jsvat">jsvat</a></p>
 
-<p>Angular-js wrapper for <a href="https://en.wikipedia.org/wiki/VAT_identification_number">jsvat</a></p>
+        <p>jsvat is a small library to check validity of European (and few non-eu) VAT number. (
+            <a href="https://en.wikipedia.org/wiki/VAT_identification_number">learn more</a> about VAT)
+            jsvat use 2-step check (see below) and didn't make any request for external resources.</p>
 
-<p>jsvat is a small library to check validity of European (and few non-eu) VAT number. (<a href="https://en.wikipedia.org/wiki/VAT_identification_number">learn more</a> about VAT)
-jsvat use 2-step check (see below) and didn't make any request for external resources.</p>
+        <p>Each country has own regexp for VAT number and different math-logic of number calculating.</p>
+        <p>For more details check jsvat repo.</p>
+    </section>
 
-<p>Each country has own regexp for VAT number and different math-logic of number calculating.</p>
+    <section class="inner">
+        <h2>
+            <a id="installation" class="anchor" href="#installation" aria-hidden="true"><span
+                    class="octicon octicon-link"></span></a>Installation</h2>
 
-<h2>
-<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+        <ol>
+            <li>
+                <p>Bower</p>
 
-<ol>
-<li>
-<p>Bower</p>
+                <p><code>bower i angular-jsvat --save</code></p>
+            </li>
+            <li>
+                <p>NPM (node.js)</p>
 
-<p><code>bower i angular-jsvat --save</code></p>
-</li>
-<li>
-<p>NPM (node.js)</p>
+                <p><code>npm i angular-jsvat --save</code></p>
+            </li>
+            <li>
+                <p>Directly download one of the latest releases:</p>
 
-<p><code>npm i angular-jsvat --save</code></p>
-</li>
-<li>
-<p>Directly download one of the latest releases:</p>
+                <p><a href="https://github.com/se-panfilov/angular-jsvat/releases">https://github.com/se-panfilov/angular-jsvat/releases</a>
+                </p>
+            </li>
+        </ol>
+    </section>
 
-<p><a href="https://github.com/se-panfilov/angular-jsvat/releases">https://github.com/se-panfilov/angular-jsvat/releases</a></p>
-</li>
-</ol>
+    <section class="inner">
+        <h2>
+            <a id="how-does-jsvat-check-the-validity" class="anchor" href="#how-does-jsvat-check-the-validity"
+               aria-hidden="true"><span class="octicon octicon-link"></span></a>How does jsvat check the validity?</h2>
 
-<h2>
-<a id="how-does-jsvat-check-the-validity" class="anchor" href="#how-does-jsvat-check-the-validity" aria-hidden="true"><span class="octicon octicon-link"></span></a>How does jsvat check the validity?</h2>
+        <p>There is 2-step check:</p>
 
-<p>There is 2-step check:</p>
+        <ol>
+            <li>
+                <p>Compare with list of Regexps;</p>
 
-<ol>
-<li>
-<p>Compare with list of Regexps;</p>
+                <p>For example regexp for austria is <code>/^(AT)U(\d{8})$/</code>.</p>
 
-<p>For example regexp for austria is <code>/^(AT)U(\d{8})$/</code>.</p>
+                <p>Looks like <code>ATU99999999</code> is valid (it's successfied the regexp), but actually it's should
+                    be invalid.</p>
+            </li>
+            <li>
+                <p>Some magic mathematical counting;</p>
 
-<p>Looks like <code>ATU99999999</code> is valid (it's successfied the regexp), but actually it's should be invalid.</p>
-</li>
-<li>
-<p>Some magic mathematical counting;</p>
+                <p>Here we make some mathematical calculation (different for each country).
+                    After that we may be sure that <code>ATU99999999</code>and for example <code>ATV66889218</code>
+                    isn't valid, but <code>ATU12011204</code> is valid.</p>
+            </li>
+        </ol>
+    </section>
 
-<p>Here we make some mathematical calculation (different for each country).
-After that we may be sure that <code>ATU99999999</code>and for example <code>ATV66889218</code> isn't valid, but <code>ATU12011204</code> is valid.</p>
-</li>
-</ol>
+    <section class="inner">
+        <h2>
+            <a id="source-of-inspiration" class="anchor" href="#source-of-inspiration" aria-hidden="true"><span
+                    class="octicon octicon-link"></span></a>Source of inspiration:</h2>
 
-<h2>
-<a id="source-of-inspiration" class="anchor" href="#source-of-inspiration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Source of inspiration:</h2>
+        <p>Based on this great work: <a href="http://www.braemoor.co.uk/software/vat.shtml">http://www.braemoor.co.uk/software/vat.shtml</a>
+        </p>
 
-<p>Based on this great work: <a href="http://www.braemoor.co.uk/software/vat.shtml">http://www.braemoor.co.uk/software/vat.shtml</a></p>
+        <p>At the moment the code was in public access without any license information.</p>
 
-<p>At the moment the code was in public access without any license information.</p>
+        <p>I'm totally rewrite all the code.</p>
 
-<p>I'm totally rewrite all the code.</p>
+        <h2>
+            <a id="browsers-supports" class="anchor" href="#browsers-supports" aria-hidden="true"><span
+                    class="octicon octicon-link"></span></a>Browsers Supports</h2>
 
-<h2>
-<a id="browsers-supports" class="anchor" href="#browsers-supports" aria-hidden="true"><span class="octicon octicon-link"></span></a>Browsers Supports</h2>
+        <p>...
+            (unknown yet, but modern browsers should support it as well)</p>
+    </section>
 
-<p>...
-(unknown yet, but modern browsers should support it as well)</p>
+    <section class="inner">
+        <h2>
+            <a id="list-of-supported-countries" class="anchor" href="#list-of-supported-countries"
+               aria-hidden="true"><span class="octicon octicon-link"></span></a>List of supported Countries:</h2>
 
-<h2>
-<a id="list-of-supported-countries" class="anchor" href="#list-of-supported-countries" aria-hidden="true"><span class="octicon octicon-link"></span></a>List of supported Countries:</h2>
+        <ul>
+            <li>Austria</li>
+            <li>Belgium</li>
+            <li>Bulgaria</li>
+            <li>Switzerland</li>
+            <li>Cyprus</li>
+            <li>Czech Republic</li>
+            <li>Germany</li>
+            <li>Denmark</li>
+            <li>Greece</li>
+            <li>Spain</li>
+            <li>Europe</li>
+            <li>Finland</li>
+            <li>France</li>
+            <li>United Kingdom</li>
+            <li>Croatia</li>
+            <li>Hungary</li>
+            <li>Ireland</li>
+            <li>Italy</li>
+            <li>Latvia</li>
+            <li>Lithunia</li>
+            <li>Luxembourg</li>
+            <li>Malta</li>
+            <li>Netherlands</li>
+            <li>Norway</li>
+            <li>Poland</li>
+            <li>Portugal</li>
+            <li>Romania</li>
+            <li>Russia Federation</li>
+            <li>Serbia</li>
+            <li>Slovenia</li>
+            <li>Slovakia republic</li>
+            <li>Sweden</li>
+        </ul>
+    </section>
 
-<ul>
-<li>Austria</li>
-<li>Belgium</li>
-<li>Bulgaria</li>
-<li>Switzerland</li>
-<li>Cyprus</li>
-<li>Czech Republic</li>
-<li>Germany</li>
-<li>Denmark</li>
-<li>Greece</li>
-<li>Spain</li>
-<li>Europe</li>
-<li>Finland</li>
-<li>France</li>
-<li>United Kingdom</li>
-<li>Croatia</li>
-<li>Hungary</li>
-<li>Ireland</li>
-<li>Italy</li>
-<li>Latvia</li>
-<li>Lithunia</li>
-<li>Luxembourg</li>
-<li>Malta</li>
-<li>Netherlands</li>
-<li>Norway</li>
-<li>Poland</li>
-<li>Portugal</li>
-<li>Romania</li>
-<li>Russia Federation</li>
-<li>Serbia</li>
-<li>Slovenia</li>
-<li>Slovakia republic</li>
-<li>Sweden</li>
-</ul>
+    <section class="inner">
+        <h2>
+            <a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>LICENSE
+        </h2>
 
-<h2>
-<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>LICENSE</h2>
+        <p>MIT: <a href="https://github.com/se-panfilov/angular-jsvat/blob/master/LICENSE">https://github.com/se-panfilov/jsvat/blob/master/LICENSE</a>
+        </p>
+    </section>
 
-<p>MIT: <a href="https://github.com/se-panfilov/angular-jsvat/blob/master/LICENSE">https://github.com/se-panfilov/jsvat/blob/master/LICENSE</a></p>
-      </section>
+</div>
+<!--[if !IE]>
+<script>fixScale(document);</script><![endif]-->
 
-    </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    
-  </body>
+</body>
 </html>
