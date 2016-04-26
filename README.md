@@ -19,19 +19,19 @@ Check the validity of the format of an EU VAT number. No dependencies(except ang
 What is it?
 --------
 
-Angular-js wrapper for [jsvat][2] (jsvat it's a core-logic for vat validation)
+Angular-js wrapper for [jsvat][5] (jsvat it's a core-logic for vat validation)
 
 angular-jsvat is a small library to check validity of European (and few non-eu) VAT number. ([learn more][1] about VAT)
 jsvat use 2-step check (see below) and didn't make any request for external resources.
 
 Each country has own regexp for VAT number and different math-logic of number calculating.
 
-For more details check [jsvat][2] repo.
+For more details check [jsvat][5] repo.
 
 What angular-jsvat do?
 --------
 
-1. Provide `JsVatFactory` fcatory (just an angularjs wrapper for [jsvat][2])
+1. Provide `JsVatFactory` facatory (just an angularjs wrapper for [jsvat][5])
 
 Just check is VAT number valid or not and which country this VAT is:
 
