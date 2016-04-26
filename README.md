@@ -14,7 +14,7 @@ angular-jsvat
 -------
 [Demo and Examples][2]
 
-Check the validity of the format of an EU VAT number. No dependencies.(except angularjs of course).
+Check the validity of the format of an EU VAT number. No dependencies(except angularjs of course).
 
 What is it?
 --------
