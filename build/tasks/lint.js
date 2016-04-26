@@ -6,7 +6,6 @@ const config = require('../config');
 const jshint = require('gulp-jshint');
 const jshintReporter = jshint.reporter('jshint-stylish');
 
-
 gulp.task('lint', function () {
 
   return gulp.src(config.js.src)

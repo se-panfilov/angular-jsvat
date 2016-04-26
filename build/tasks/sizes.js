@@ -1,9 +1,7 @@
 "use strict";
 
 const gulp = require('gulp');
-
 const size = require('gulp-size');
-
 
 gulp.task('sizes', function () {
   return gulp.src([

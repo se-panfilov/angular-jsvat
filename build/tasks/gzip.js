@@ -7,7 +7,6 @@ const gzip = require('gulp-gzip');
 const notify = require('gulp-notify');
 const plumber = require('gulp-plumber');
 
-
 gulp.task('gzip', function () {
   return gulp.src(config.dest + '/**/*.min.js')
       .pipe(plumber({

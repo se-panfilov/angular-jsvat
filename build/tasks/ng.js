@@ -9,12 +9,10 @@ const plumber = require('gulp-plumber');
 const wrap = require('gulp-wrap');
 const ngAnnotate = require('gulp-ng-annotate');
 const beautify = require('gulp-beautify');
+const ngWrap = require('../../src/template/wrap.js');
 
 gulp.task('ng', function () {
-
-
-  const ngWrap = require('../../src/template/wrap.js');
-
+  
   return gulp.src(config.libs + '/jsvat/dist/jsvat.js')
       .pipe(plumber({
         errorHandler: notify.onError(function (err) {
