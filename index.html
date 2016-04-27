@@ -55,10 +55,11 @@
             <a id="angular-jsvat" class="anchor" href="#angular-jsvat" aria-hidden="true"><span
                     class="octicon octicon-link"></span></a>angular-jsvat</h2>
 
-        <p><a href="https://github.com/se-panfilov/jsvat">Demo and Examples</a></p>
+        <a href="https://github.com/se-panfilov/jsvat">Demo and Examples</a>
 
         <p>Check the validity of the format of an EU VAT number. No dependencies(except angularjs of course).</p>
     </section>
+
 
     <section class="inner">
         <h2>
@@ -72,7 +73,44 @@
             jsvat use 2-step check (see below) and didn't make any request for external resources.</p>
 
         <p>Each country has own regexp for VAT number and different math-logic of number calculating.</p>
-        <p>For more details check jsvat repo.</p>
+        <p>For more details check <a href="https://github.com/se-panfilov/jsvat">jsvat</a> repo.</p>
+    </section>
+
+    <section class="inner">
+        <h2>
+            <a id="what-angular-jsvat-do" class="anchor" href="#what-angular-jsvat-do" aria-hidden="true"><span
+                    class="octicon octicon-link"></span></a>What angular-jsvat do</h2>
+        <ul>
+            <ol>
+                <p>
+                    Provide JsVatFactory facatory (just an angularjs wrapper for <a
+                        href="https://github.com/se-panfilov/jsvat">jsvat</a>)
+                </p>
+
+                <p>Just check is VAT number valid or not and which country this VAT is:
+                    <code>
+                        JsVatFactory.checkVAT('BG131134023'); // {isValid: true, country: 'bulgaria', value:
+                        'BG131134023'}<br/>
+                        JsVatFactory.checkVAT('BG0433170001'); //{isValid: false, country: null, value:
+                        'BG0433170001'}<br/>
+                        JsVatFactory.checkVAT('atu5-150-7409'); //{isValid: true, country: 'austria', value:
+                        'ATU51507409'}<br/>
+                        JsVatFactory.checkVAT('aTU 5 804 4146'); //{isValid: true, country: 'austria', value:
+                        'ATU58044146'}<br/>
+                    </code>
+                </p>
+
+            </ol>
+            <ol>
+                <p>You can specify list of allowed countries</p>
+                <code>
+                    JsVatFactory.config = ['austria', 'belgium']; //All countries except 'austria' and 'belgium' would
+                    return false<br/>
+                    JsVatFactory.checkVAT('BG131134023'); //valid VAT, but result would be 'false'<br/>
+                </code>
+            </ol>
+        </ul>
+
     </section>
 
     <section class="inner">
@@ -97,6 +135,12 @@
                 <p><a href="https://github.com/se-panfilov/angular-jsvat/releases">https://github.com/se-panfilov/angular-jsvat/releases</a>
                 </p>
             </li>
+            <li>
+                <p> After that, just include angular-jsvat as a dependency</p>
+
+                <code>angular.module('app', ['angular-jsvat'])</code><br/>
+                <p>(no dependencies required, angular-jsvat is standalone app)</p>
+            </li>
         </ol>
     </section>
 
@@ -105,6 +149,7 @@
             <a id="how-does-jsvat-check-the-validity" class="anchor" href="#how-does-jsvat-check-the-validity"
                aria-hidden="true"><span class="octicon octicon-link"></span></a>How does jsvat check the validity?</h2>
 
+        <p>It use <a href="https://github.com/se-panfilov/jsvat">jsvat</a>) core functionality:</p>
         <p>There is 2-step check:</p>
 
         <ol>
@@ -124,26 +169,6 @@
                     isn't valid, but <code>ATU12011204</code> is valid.</p>
             </li>
         </ol>
-    </section>
-
-    <section class="inner">
-        <h2>
-            <a id="source-of-inspiration" class="anchor" href="#source-of-inspiration" aria-hidden="true"><span
-                    class="octicon octicon-link"></span></a>Source of inspiration:</h2>
-
-        <p>Based on this great work: <a href="http://www.braemoor.co.uk/software/vat.shtml">http://www.braemoor.co.uk/software/vat.shtml</a>
-        </p>
-
-        <p>At the moment the code was in public access without any license information.</p>
-
-        <p>I'm totally rewrite all the code.</p>
-
-        <h2>
-            <a id="browsers-supports" class="anchor" href="#browsers-supports" aria-hidden="true"><span
-                    class="octicon octicon-link"></span></a>Browsers Supports</h2>
-
-        <p>...
-            (unknown yet, but modern browsers should support it as well)</p>
     </section>
 
     <section class="inner">
@@ -185,6 +210,14 @@
             <li>Slovakia republic</li>
             <li>Sweden</li>
         </ul>
+    </section>
+
+    <section class="inner">
+        <h2>
+            <a id="browsers-support" class="anchor" href="#browsers-support" aria-hidden="true"><span class="octicon octicon-link"></span></a>Browsers Supports
+        </h2>
+
+        <p>Support all browsers down to IE9 (including IE9).</p>
     </section>
 
     <section class="inner">
