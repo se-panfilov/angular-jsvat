@@ -1,0 +1,8 @@
+{
+  "name": "demo",
+  "devDependencies": {},
+  "dependencies": {
+    "angular": "^1.5.5",
+    "angular-jsvat": "^1.1.0"
+  }
+}
