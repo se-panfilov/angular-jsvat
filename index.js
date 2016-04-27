@@ -28,6 +28,26 @@ angular.module('demo', ['angular-jsvat'])
         return JSON.stringify(JsVatFactory.config);
       };
 
+      $scope.isValid = function () {
+        var result;
+        var value = document.getElementById('test_vat_inp').value;
+        result = JsVatFactory.checkVAT(value);
+
+        result = JSON.stringify(result);
+
+        document.getElementById('check_result').innerText = result;
+
+        return result;
+      };
+
+      $scope.checkVat = function (value, resultElemId) {
+        var result = JsVatFactory.checkVAT(value);
+
+        document.getElementById(resultElemId).innerText = JSON.stringify(result);
+
+        return result;
+      };
+
       $scope.JsVatFactory = JsVatFactory;
 
     })

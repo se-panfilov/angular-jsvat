@@ -54,7 +54,56 @@
         <div ng-bind="'IsValid: ' + result.common.isValid"></div>
         <div ng-bind="'Value: ' + result.common.value"></div>
         <div ng-bind="'Country: ' + result.common.country"></div>
-        <button ng-click="models.common='EL000000141'">Set Value</button>
+        <button ng-click="models.common='EL000000141'">Set Value EL000000141</button>
+        <div>There are few <strong>valid</strong> codes:
+            <ul>
+                <li>
+                    <code>ATU00000024</code>
+                    <button type="button" ng-click="checkVat('ATU00000024', 'result_1')">Check</button>
+                    <code id="result_1"></code>
+                </li>
+                <li>
+                    <code>BE0414445663</code>
+                    <button type="button" ng-click="checkVat('BE0414445663', 'result_2')">Check</button>
+                    <code id="result_2"></code>
+                </li>
+                <li>
+                    <code>RS100182160</code>
+                    <button type="button" ng-click="checkVat('RS100182160', 'result_3')">Check</button>
+                    <code id="result_3"></code>
+                </li>
+                <li>
+                    <code>RU0274051582</code>
+                    <button type="button" ng-click="checkVat('RU0274051582', 'result_4')">Check</button>
+                    <code id="result_4"></code>
+                </li>
+            </ul>
+        </div>
+
+        <div>There are few <strong>invalid</strong> codes:
+            <ul>
+                <li>
+                    <code>ATU10223001</code>
+                    <button type="button" onclick="checkVat('ATU10223001', 'result_5')">Check</button>
+                    <code id="result_5"></code>
+                </li>
+                <li>
+                    <code>BE0000200334</code>
+                    <button type="button" onclick="checkVat('BE0000200334', 'result_6')">Check</button>
+                    <code id="result_6"></code>
+                </li>
+                <li>
+                    <code>RO000099908</code>
+                    <button type="button" onclick="checkVat('RO000099908', 'result_7')">Check</button>
+                    <code id="result_7"></code>
+                </li>
+                <li>
+                    <code>RU5027187067</code>
+                    <button type="button" onclick="checkVat('RU5027187067', 'result_8')">Check</button>
+                    <code id="result_8"></code>
+                </li>
+            </ul>
+        </div>
     </section>
 
 
@@ -227,8 +276,5 @@
     </section>
 
 </div>
-<!--[if !IE]>
-<script>fixScale(document);</script><![endif]-->
-
 </body>
 </html>
