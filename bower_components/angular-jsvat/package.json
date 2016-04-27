@@ -1,0 +1,55 @@
+{
+  "name": "angular-jsvat",
+  "version": "1.1.0",
+  "description": "Check the validity of the format of an EU VAT number specified",
+  "main": "./dist/angular-jsvat.js",
+  "scripts": {},
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/se-panfilov/angular-jsvat.git"
+  },
+  "bugs": {
+    "url": "https://github.com/se-panfilov/jangular-svat/issues"
+  },
+  "keywords": [
+    "angular",
+    "jsvat",
+    "angular-jsvat",
+    "EU",
+    "vat",
+    "VAT",
+    "VATIN",
+    "european",
+    "euro",
+    "value",
+    "added",
+    "check",
+    "syntax",
+    "validator",
+    "VAT Code validator",
+    "validator",
+    "finance",
+    "tax"
+  ],
+  "ignore": {},
+  "author": "S.Panfilov <se-panfilov@ya.ru> (https://se-panfilov.github.io)",
+  "private": false,
+  "dependencies": {},
+  "devDependencies": {
+    "event-stream": "^3.3.2",
+    "gulp-beautify": "^2.0.0",
+    "gulp-buddy.js": "^1.0.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-gzip": "^1.2.0",
+    "gulp-ng-annotate": "^2.0.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-size": "^2.1.0",
+    "gulp-todo": "^4.1.0",
+    "gulp-wrap": "^0.11.0",
+    "require-dir": "^0.3.0",
+    "run-sequence": "^1.1.5"
+  }
+}
