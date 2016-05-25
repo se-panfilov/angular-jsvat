@@ -35,7 +35,7 @@ What angular-jsvat do?
 
 Just check is VAT number valid or not and which country this VAT is:
 
-  ```
+  ```javascript
   JsVatFactory.checkVAT('BG131134023'); // {isValid: true, country: 'bulgaria', value: 'BG131134023'}
   JsVatFactory.checkVAT('BG0433170001'); //{isValid: false, country: null, value: 'BG0433170001'}
   JsVatFactory.checkVAT('atu5-150-7409');  //{isValid: true, country: 'austria', value: 'ATU51507409'}
@@ -44,7 +44,7 @@ Just check is VAT number valid or not and which country this VAT is:
 
 You can specify list of allowed countries
 
-  ```
+  ```javascript
   JsVatFactory.config = ['austria', 'belgium']; //All countries except 'austria' and 'belgium' would return false
   JsVatFactory.checkVAT('BG131134023'); //valid VAT, but result would be 'false'
   ```
@@ -54,7 +54,7 @@ To reset config just do `JsVatFactory.config = [];`
  2. Provide `jsvat` directive (for inputs).
     Directive take a ngModel and return the result to the result object
  
- ```
+ ```html
  <input jsvat="result" type="text" ng-model="model">
  ```
 
@@ -75,7 +75,7 @@ Installation
 
 After that, just include `angular-jsvat` as a dependency
 
-```
+```javascript
 angular.module('app', ['angular-jsvat'])
 ```
 
