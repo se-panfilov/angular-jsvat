@@ -1,4 +1,6 @@
-# DEPRECATED: Please do not use
+# Deprecated / Unmaintained
+This project is no longer actively maintained. It may still work, but use it at your own risk.
+Please consider forking it if you need continued support.
 
 [![Codacy Badge](https://api.codacy.com/project/badge/grade/6e444e53a23c4b32aeaff09864446989)](https://www.codacy.com/app/se-panfilov/angular-jsvat)
 [![bitHound Overall Score](https://www.bithound.io/github/se-panfilov/jsvat/badges/score.svg)](https://www.bithound.io/github/se-panfilov/angular-jsvat) [![bitHound Code](https://www.bithound.io/github/se-panfilov/jsvat/badges/code.svg)](https://www.bithound.io/github/se-panfilov/angular-jsvat)
